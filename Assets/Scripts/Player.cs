@@ -5,13 +5,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    // Some properties
     public float speed = 10f;
     public float sensitivity = 1f;
 
+    // Inventory
+    public List<GameObject> inventory;
+
+    // Camera
     public CinemachineVirtualCamera myCam;
     private CinemachineComposer _myCamComposer;
 
+    
     private Vector3 _moveDirection;
+
 	// Use this for initialization
 	void Start () {
         _moveDirection = new Vector3(0, 0, 0);
@@ -19,6 +26,9 @@ public class Player : MonoBehaviour {
 
         // Lock the cursor in the center of screen
         Cursor.lockState = CursorLockMode.Locked;
+
+        // Initialization of inventory
+        inventory = new List<GameObject>();
     }
 	
 	// Update is called once per frame
@@ -53,6 +63,12 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.W))
         {
             _moveDirection.z = 1;
+        }
+
+        // Interaction
+        if (Input.GetKey(KeyCode.E))
+        {
+
         }
 
         transform.Translate(_moveDirection.normalized * speed * Time.deltaTime, Space.Self);
