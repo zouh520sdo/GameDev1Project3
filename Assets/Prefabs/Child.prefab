@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4831797886341538}
   - component: {fileID: 95074269659348416}
   - component: {fileID: 54083325934068552}
-  - component: {fileID: 65298006308214892}
+  - component: {fileID: 136750746971686522}
   m_Layer: 0
   m_Name: Child
   m_TagString: Untagged
@@ -1013,7 +1013,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049129998510400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.52}
+  m_LocalPosition: {x: 0.965, y: 0.31, z: 2.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4648726259903242}
@@ -1160,18 +1160,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &65298006308214892
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1049129998510400}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.64, y: 1.73, z: 0.65}
-  m_Center: {x: 0, y: 0.87, z: 0}
 --- !u!95 &95074269659348416
 Animator:
   serializedVersion: 3
@@ -1190,6 +1178,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &136750746971686522
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049129998510400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.22
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.44, z: 0}
 --- !u!137 &137995670348643360
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
