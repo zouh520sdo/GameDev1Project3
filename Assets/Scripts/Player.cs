@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
     public CinemachineVirtualCamera myCam;
     private CinemachineComposer _myCamComposer;
 
+    // 
+    private SphereCollider pickupTrigger;
     
     private Vector3 _moveDirection;
 
@@ -72,5 +74,20 @@ public class Player : MonoBehaviour {
         }
 
         transform.Translate(_moveDirection.normalized * speed * Time.deltaTime, Space.Self);
+    }
+
+    /// <summary>
+    /// For interaction with pickable item
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerStay(Collider other)
+    {
+        // Show pickable indicator icon if any item is avaiable
+
+        // Interaction
+        if (Input.GetKey(KeyCode.E))
+        {
+
+        }
     }
 }
