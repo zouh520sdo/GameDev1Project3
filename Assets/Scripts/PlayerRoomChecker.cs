@@ -24,10 +24,20 @@ public class PlayerRoomChecker : MonoBehaviour {
             _player.room = Room.livingroom;
             Debug.Log("Enter living room.");
         }
-        if (other.name == "ChildRoomTrigger")
+        if (other.name == "Child1RoomTrigger")
         {
-            _player.room = Room.childroom;
-            Debug.Log("Enter child room.");
+            _player.room = Room.childroom1;
+            Debug.Log("Enter child 1 room.");
+        }
+        if (other.name == "Child2RoomTrigger")
+        {
+            _player.room = Room.childroom2;
+            Debug.Log("Enter child 2 room.");
+        }
+        if (other.name == "Child3RoomTrigger")
+        {
+            _player.room = Room.childroom3;
+            Debug.Log("Enter child 3 room.");
         }
         if (other.name == "KitchenTrigger")
         {
