@@ -14,12 +14,12 @@ public enum Room
 
 public class GameManager : MonoBehaviour {
 
-    public float gameDuration = 180;
+    public float gameDuration = 10;
 
 
 	// Use this for initialization
 	void Start () {
-		
+        StartCoroutine(GameCountDown(gameDuration));
 	}
 	
 	// Update is called once per frame
