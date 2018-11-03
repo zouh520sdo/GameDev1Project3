@@ -73,4 +73,28 @@ public class Player : MonoBehaviour {
 
         transform.Translate(_moveDirection.normalized * speed * Time.deltaTime, Space.Self);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "LivingRoomTrigger")
+        {
+            Debug.Log("Enter living room.");
+        }
+        if (other.name == "ChildRoomTrigger")
+        {
+            Debug.Log("Enter child room.");
+        }
+        if (other.name == "KitchenTrigger")
+        {
+            Debug.Log("Enter kitchen room.");
+        }
+        if (other.name == "BathroomTrigger")
+        {
+            Debug.Log("Enter bathroom room.");
+        }
+        if (other.name == "MomRoomTrigger")
+        {
+            Debug.Log("Enter mom room.");
+        }
+    }
 }
