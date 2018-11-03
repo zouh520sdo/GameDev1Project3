@@ -2,9 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Room
+{
+    none,
+    livingroom,
+    childroom,
+    kitchen,
+    bathroom,
+    momroom
+}
+
 public class GameManager : MonoBehaviour {
 
     public float gameDuration = 180;
+
 
 	// Use this for initialization
 	void Start () {

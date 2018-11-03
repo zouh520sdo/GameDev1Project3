@@ -12,6 +12,9 @@ public class Player : MonoBehaviour {
     // Inventory
     public List<GameObject> inventory;
 
+    // Room player are current 
+    public Room room;
+
     // Camera
     public CinemachineVirtualCamera myCam;
     private CinemachineComposer _myCamComposer;
@@ -29,8 +32,9 @@ public class Player : MonoBehaviour {
         // Lock the cursor in the center of screen
         Cursor.lockState = CursorLockMode.Locked;
 
-        // Initialization of inventory
+        // Initialization
         inventory = new List<GameObject>();
+        room = Room.none;
     }
 	
 	// Update is called once per frame
@@ -89,5 +93,6 @@ public class Player : MonoBehaviour {
         {
 
         }
+
     }
 }
