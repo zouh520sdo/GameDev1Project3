@@ -11,6 +11,7 @@ ModelImporter:
     2300000: pCylinder25
     3300000: pCylinder25
     4300000: pCylinder25
+    6400000: pCylinder25
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -44,7 +45,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.15
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
