@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -15,13 +16,15 @@ public class Player : MonoBehaviour {
     // Room player are current 
     public Room room;
 
+    // Aming icon
+    public Image centerIcon;
+    public Sprite circleSprite;
+    public Sprite handSprite;
+
     // Camera
     public CinemachineVirtualCamera myCam;
     private CinemachineComposer _myCamComposer;
 
-    // 
-    private SphereCollider pickupTrigger;
-    
     private Vector3 _moveDirection;
 
 	// Use this for initialization
@@ -36,6 +39,8 @@ public class Player : MonoBehaviour {
         // Initialization
         inventory = new List<GameObject>();
         room = Room.none;
+
+        centerIcon.sprite = circleSprite;
     }
 	
 	// Update is called once per frame
@@ -72,13 +77,38 @@ public class Player : MonoBehaviour {
             _moveDirection.z = 1;
         }
 
-        // Interaction
-        if (Input.GetKey(KeyCode.E))
-        {
+        transform.Translate(_moveDirection.normalized * speed * Time.deltaTime, Space.Self);
 
+        // Show pickable indicator icon if any item is avaiable
+        // Interaction
+        RaycastHit hit;
+        Interactable interactableObj;
+
+        Debug.DrawRay(myCam.transform.position, myCam.transform.TransformDirection(Vector3.forward) * 1.7f, Color.yellow);
+
+        if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, 1.7f))
+        {
+            interactableObj = hit.collider.transform.parent.GetComponent<Interactable>();
+            if (interactableObj != null)
+            {
+                centerIcon.sprite = handSprite;
+
+                // Active interaction
+                if (Input.GetKey(KeyCode.E))
+                {
+                    interactableObj.Interact();
+                }
+            }
+            else
+            {
+                centerIcon.sprite = circleSprite;
+            }
+        }
+        else
+        {
+            centerIcon.sprite = circleSprite;
         }
 
-        transform.Translate(_moveDirection.normalized * speed * Time.deltaTime, Space.Self);
     }
 
     /// <summary>
@@ -87,13 +117,6 @@ public class Player : MonoBehaviour {
     /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
-        // Show pickable indicator icon if any item is avaiable
-
-        // Interaction
-        if (Input.GetKey(KeyCode.E))
-        {
-
-        }
 
     }
 }
