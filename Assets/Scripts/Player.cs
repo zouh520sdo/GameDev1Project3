@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
 
         // Lock the cursor in the center of screen
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
 
         // Initialization
         inventory = new List<GameObject>();
