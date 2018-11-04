@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,18 +89,25 @@ public class Player : MonoBehaviour {
 
         if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, 1.7f))
         {
-            interactableObj = hit.collider.transform.parent.GetComponent<Interactable>();
-            if (interactableObj != null)
+            try
             {
-                centerIcon.sprite = handSprite;
-
-                // Active interaction
-                if (Input.GetKey(KeyCode.E))
+                interactableObj = hit.collider.transform.parent.GetComponent<Interactable>();
+                if (interactableObj != null)
                 {
-                    interactableObj.Interact();
+                    centerIcon.sprite = handSprite;
+
+                    // Active interaction
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        interactableObj.Interact();
+                    }
+                }
+                else
+                {
+                    centerIcon.sprite = circleSprite;
                 }
             }
-            else
+            catch (Exception)
             {
                 centerIcon.sprite = circleSprite;
             }
