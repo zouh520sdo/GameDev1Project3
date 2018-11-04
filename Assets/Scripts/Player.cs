@@ -97,7 +97,7 @@ public class Player : MonoBehaviour {
                     centerIcon.sprite = handSprite;
 
                     // Active interaction
-                    if (Input.GetKey(KeyCode.E))
+                    if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire1"))
                     {
                         interactableObj.Interact();
                     }
