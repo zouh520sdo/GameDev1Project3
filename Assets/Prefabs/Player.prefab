@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4caff82927d534b88a233cd3d3ea29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   sensitivity: 2
   inventory: []
   room: 0
