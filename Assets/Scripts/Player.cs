@@ -91,7 +91,12 @@ public class Player : MonoBehaviour {
         {
             try
             {
-                interactableObj = hit.collider.transform.parent.GetComponent<Interactable>();
+                //Debug.Log(hit.collider);
+                interactableObj = hit.collider.GetComponent<Interactable>();
+                if (interactableObj == null)
+                {
+                    interactableObj = hit.collider.transform.parent.GetComponent<Interactable>();
+                }
                 if (interactableObj != null)
                 {
                     centerIcon.sprite = handSprite;
