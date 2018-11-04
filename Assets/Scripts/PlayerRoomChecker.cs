@@ -19,37 +19,37 @@ public class PlayerRoomChecker : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.name == "LivingRoomTrigger")
+        if (other.name == "LivingRoomTrigger" && _player.room != Room.livingroom)
         {
             _player.room = Room.livingroom;
             Debug.Log("Enter living room.");
         }
-        if (other.name == "Child1RoomTrigger")
+        if (other.name == "Child1RoomTrigger" && _player.room != Room.childroom1)
         {
             _player.room = Room.childroom1;
             Debug.Log("Enter child 1 room.");
         }
-        if (other.name == "Child2RoomTrigger")
+        if (other.name == "Child2RoomTrigger" && _player.room != Room.childroom2)
         {
             _player.room = Room.childroom2;
             Debug.Log("Enter child 2 room.");
         }
-        if (other.name == "Child3RoomTrigger")
+        if (other.name == "Child3RoomTrigger" && _player.room != Room.childroom3)
         {
             _player.room = Room.childroom3;
             Debug.Log("Enter child 3 room.");
         }
-        if (other.name == "KitchenTrigger")
+        if (other.name == "KitchenTrigger" && _player.room != Room.kitchen)
         {
             _player.room = Room.kitchen;
             Debug.Log("Enter kitchen room.");
         }
-        if (other.name == "BathroomTrigger")
+        if (other.name == "BathroomTrigger" && _player.room != Room.bathroom)
         {
             _player.room = Room.bathroom;
             Debug.Log("Enter bathroom room.");
         }
-        if (other.name == "MomRoomTrigger")
+        if (other.name == "MomRoomTrigger" && _player.room != Room.momroom)
         {
             _player.room = Room.momroom;
             Debug.Log("Enter mom room.");
