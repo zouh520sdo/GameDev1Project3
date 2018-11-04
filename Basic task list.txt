@@ -1,0 +1,38 @@
+Basic task list
+------------------
+1. Leaving food out
+2. Leave the TV on
+3. Ask for a toy
+4. Ask for food
+5. Leave doors/windows open
+6. Spilling drinks
+7. Drawing on walls (Could move to unique list)
+8. Playing with cleaning supplies
+9. Leave water runnning
+10. Poop on the bathroom floor
+11. Leave toys out
+12. Trips and falls (Could move to unique list)
+
+
+How do tasks get chosen?
+-Chosen at the beginning of the game
+
+How long do tasks take?
+-20 minutes maximum
+
+How do children avoid occupying the same task?
+-Tasks can be divided into variables for which task, when it's happening,
+and where it's happening. Make sure unique tasks are chosen every time.
+
+Can tasks be done multiple times?
+-Only certain tasks, and the each task can be given a maximum amount of
+repetitions.
+
+Should children have unique tasks?
+-Yes, each child will have their own list of unique tasks.
+
+Will children be guaranteed to pick unique tasks?
+-TBD
+
+How many tasks should be chosen per child?
+-TBD (Maybe based on child)
