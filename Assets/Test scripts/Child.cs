@@ -18,8 +18,7 @@ public class Child : MonoBehaviour
         //While asleep, no meters increase
 
     //Personality concept?
-    //
-    //What this script needs:
+    //What these AI need:
     /*
      * Control of meters for individual children 
      * Way to decide movement patterns for children
