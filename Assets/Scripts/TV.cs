@@ -25,7 +25,6 @@ public class TV : Interactable {
         _videoPlayer.targetMaterialProperty = "_MainTex";
         _videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
         _videoPlayer.SetTargetAudioSource(0, _audioSource);
-
         _currentFrame = 0;
     }
 	
