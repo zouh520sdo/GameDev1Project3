@@ -14,8 +14,19 @@ public class TV : Interactable {
 
 	// Use this for initialization
 	void Start () {
-        _videoPlayer = gameObject.AddComponent<VideoPlayer>();
-        _audioSource = gameObject.AddComponent<AudioSource>();
+
+
+        _videoPlayer = GetComponent<VideoPlayer>();
+        if (_videoPlayer == null)
+        {
+            _videoPlayer = gameObject.AddComponent<VideoPlayer>();
+        }
+
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
         _videoPlayer.playOnAwake = false;
         _videoPlayer.clip = videoClip;
@@ -24,6 +35,10 @@ public class TV : Interactable {
         _videoPlayer.targetMaterialRenderer = GetComponent<Renderer>();
         _videoPlayer.targetMaterialProperty = "_MainTex";
         _videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        _audioSource.spatialize = true;
+        _audioSource.spatialBlend = 1;
+        _audioSource.maxDistance = 50;
+        _audioSource.minDistance = 2;
         _videoPlayer.SetTargetAudioSource(0, _audioSource);
         _currentFrame = 0;
     }
