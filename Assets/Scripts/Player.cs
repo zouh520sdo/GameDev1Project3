@@ -22,6 +22,42 @@ public class Player : MonoBehaviour {
     public Sprite circleSprite;
     public Sprite handSprite;
 
+    // Cleaning UI
+    public float hideInactiveAfter;
+    public Slider cleanUpSlider;
+    public LayerMask ignoredLayerMask;
+    public Cleanable cleanable
+    {
+        set
+        {
+            _cleanable = value;
+            cleanUpSlider.gameObject.SetActive(true);
+
+            if (cleanSliderTimeStamp == -1)
+            {
+                StartCoroutine(HideSliderInactive());
+            }
+            else
+            {
+                cleanSliderTimeStamp = Time.time;
+            }
+        }
+        get { return _cleanable; }
+    }
+    private Cleanable _cleanable;
+    private float cleanSliderTimeStamp = -1;
+    IEnumerator HideSliderInactive ()
+    {
+        cleanSliderTimeStamp = Time.time;
+        while (Time.time - cleanSliderTimeStamp < hideInactiveAfter)
+        {
+            yield return null;
+        }
+
+        cleanSliderTimeStamp = -1;
+        cleanUpSlider.gameObject.SetActive(false);
+    }
+
     // Camera
     public CinemachineVirtualCamera myCam;
     private CinemachineComposer _myCamComposer;
@@ -42,6 +78,8 @@ public class Player : MonoBehaviour {
         room = Room.none;
 
         centerIcon.sprite = circleSprite;
+
+        cleanSliderTimeStamp = -1;
     }
 	
 	// Update is called once per frame
@@ -87,17 +125,22 @@ public class Player : MonoBehaviour {
 
         Debug.DrawRay(myCam.transform.position, myCam.transform.TransformDirection(Vector3.forward) * 1.7f, Color.yellow);
 
-        if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, 1.7f))
+        if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, 1.7f, ~ignoredLayerMask))
         {
             try
             {
-                interactableObj = hit.collider.transform.parent.GetComponent<Interactable>();
+                //Debug.Log(hit.collider);
+                interactableObj = hit.collider.GetComponent<Interactable>();
+                if (interactableObj == null)
+                {
+                    interactableObj = hit.collider.transform.parent.GetComponent<Interactable>();
+                }
                 if (interactableObj != null)
                 {
                     centerIcon.sprite = handSprite;
 
                     // Active interaction
-                    if (Input.GetKey(KeyCode.E))
+                    if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire1"))
                     {
                         interactableObj.Interact();
                     }
@@ -115,6 +158,17 @@ public class Player : MonoBehaviour {
         else
         {
             centerIcon.sprite = circleSprite;
+        }
+
+        // Update cleanable slider
+        if (cleanable)
+        {
+            cleanUpSlider.value = cleanable._completeness;
+        }
+        else
+        {
+            // Hide slider
+            cleanUpSlider.gameObject.SetActive(false);
         }
 
     }
