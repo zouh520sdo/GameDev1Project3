@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4620765708326840}
   - component: {fileID: 65411544327154714}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Child1RoomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4625741549631018}
   - component: {fileID: 65645381281424260}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KitchenTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4089326691088884}
   - component: {fileID: 65484432715499428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BathroomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4718379571062110}
   - component: {fileID: 65465357214690452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MomRoomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4990092394635202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RoomTriggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4500667287938794}
   - component: {fileID: 65271560338625828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LivingRoomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4216540855607468}
   - component: {fileID: 65956301571856600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Child3RoomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4274034887726672}
   - component: {fileID: 65801592485439532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Child2RoomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4320884317538440}
   - component: {fileID: 65605061913895834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KitchenTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
