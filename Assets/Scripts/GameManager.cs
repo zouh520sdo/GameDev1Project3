@@ -6,9 +6,8 @@ public enum Room
 {
     none,
     livingroom,
-    childroom1,
-    childroom2,
-    childroom3,
+    girlroom,
+    boysroom,
     kitchen,
     bathroom,
     momroom
