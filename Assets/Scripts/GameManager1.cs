@@ -9,13 +9,14 @@ public class GameManager1 : MonoBehaviour {
     public Transform odd_boy;
     public float gameTime = 360; //game is 6 minutes long, so 360 seconds 
     public Transform[] spawnPoints;
+    public GameObject[] kids;
 
 
 	// Use this for initialization
 	void Start () {
 
-        
 
+        SpawnChildren();
 
 
 	}
@@ -27,4 +28,19 @@ public class GameManager1 : MonoBehaviour {
         print(gameTime);
 
     }
+
+    public void SpawnChildren()
+    {
+        List<Transform> freeSpawnPoints = new List<Transform>(spawnPoints);
+
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            int index = Random.Range(0, freeSpawnPoints.Count);
+            Transform pos = freeSpawnPoints[index];
+            freeSpawnPoints.RemoveAt(index);
+            Instantiate(kids[i], pos.position, pos.rotation);
+        }
+    }
+
+
 }

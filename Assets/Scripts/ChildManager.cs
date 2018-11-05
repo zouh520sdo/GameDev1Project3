@@ -6,6 +6,7 @@ public class ChildManager : MonoBehaviour {
 
     public Transform child_name;
     public GameManager1 game_manager;
+    public Vector3 spawnPoint;
 
 
 
