@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessing
+  - Light
+  - Trigger
+  - Player
+  - Bed
   - 
   - 
   - 
