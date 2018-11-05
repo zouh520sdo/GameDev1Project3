@@ -1735,6 +1735,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1950559767220902, guid: 864308bdc0241dc408ce6fa66e40ca3c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950559767220902, guid: 864308bdc0241dc408ce6fa66e40ca3c, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 864308bdc0241dc408ce6fa66e40ca3c, type: 2}
   m_IsPrefabAsset: 0
