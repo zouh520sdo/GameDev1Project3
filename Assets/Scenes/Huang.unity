@@ -652,7 +652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3322893, y: 0.20771143}
   m_AnchorMax: {x: 0.66800004, y: 0.2776443}
-  m_AnchoredPosition: {x: 0.15377808, y: -0.099998474}
+  m_AnchoredPosition: {x: 0.15377808, y: -0.1000061}
   m_SizeDelta: {x: 0, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &923724523
@@ -926,16 +926,6 @@ Prefab:
       propertyPath: myCam
       value: 
       objectReference: {fileID: 1820691188}
-    - target: {fileID: 114955180095917874, guid: d3011f130a32e074ebb5a805e0ae44be,
-        type: 2}
-      propertyPath: ignoredLayerMask.m_Bits
-      value: 3072
-      objectReference: {fileID: 0}
-    - target: {fileID: 114955180095917874, guid: d3011f130a32e074ebb5a805e0ae44be,
-        type: 2}
-      propertyPath: hideInactiveAfter
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3011f130a32e074ebb5a805e0ae44be, type: 2}
   m_IsPrefabAsset: 0
