@@ -343,19 +343,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1001742664e384aa3bf9394ec8f29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  girl: {fileID: 677142174}
-  bad_boy: {fileID: 526751142}
-  odd_boy: {fileID: 512287135}
   girl_manager: {fileID: 677142169}
   badb_manager: {fileID: 526751143}
   oddb_manager: {fileID: 512287136}
-  gameTime: 360
-  spawnPoints:
+  girl_agent: {fileID: 677142170}
+  badBoy_agent: {fileID: 526751144}
+  mildBoy_agent: {fileID: 512287137}
+  girlChoices:
+  - {fileID: 1817620830}
+  - {fileID: 224198181}
+  - {fileID: 224198181}
+  - {fileID: 1082318677}
+  - {fileID: 1821236771}
+  - {fileID: 302973281}
+  bad_boyChoices:
   - {fileID: 1817620830}
   - {fileID: 224198181}
   - {fileID: 1082318677}
   - {fileID: 1821236771}
   - {fileID: 867012310}
+  - {fileID: 302973281}
+  mild_boyChoices:
+  - {fileID: 1817620830}
+  - {fileID: 224198181}
+  - {fileID: 1082318677}
+  - {fileID: 1821236771}
+  - {fileID: 867012310}
+  - {fileID: 302973281}
+  livingroom: {fileID: 1817620830}
+  mom_room: {fileID: 1821236771}
+  girl_room: {fileID: 224198181}
+  boys_room: {fileID: 1082318677}
+  kitchen: {fileID: 867012310}
+  bathroom: {fileID: 302973281}
+  gameTime: 360
   kids:
   - {fileID: 1295425207559458, guid: 44515a17a8688b34c942a51148af3a27, type: 2}
   - {fileID: 1292322706229884, guid: de2d5a1ca43d01f4b8219c4db18c1eed, type: 2}
@@ -807,11 +828,6 @@ MonoBehaviour:
 --- !u!195 &677142170 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 195225584593723782, guid: 44515a17a8688b34c942a51148af3a27,
-    type: 2}
-  m_PrefabInternal: {fileID: 941147505}
---- !u!4 &677142174 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4708760325401012, guid: 44515a17a8688b34c942a51148af3a27,
     type: 2}
   m_PrefabInternal: {fileID: 941147505}
 --- !u!1 &737495404
