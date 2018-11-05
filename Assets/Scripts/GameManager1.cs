@@ -38,7 +38,8 @@ public class GameManager1 : MonoBehaviour {
             int index = Random.Range(0, freeSpawnPoints.Count);
             Transform pos = freeSpawnPoints[index];
             freeSpawnPoints.RemoveAt(index);
-            Instantiate(kids[i], pos.position, pos.rotation);
+           // Instantiate(kids[i], pos.x, 0, pos.z, pos.rotation);
+             Instantiate(kids[i], pos.position, pos.rotation);
         }
     }
 
