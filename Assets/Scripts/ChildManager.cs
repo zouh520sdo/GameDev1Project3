@@ -14,12 +14,14 @@ public class ChildManager : MonoBehaviour {
     public NavMeshAgent agent;
 
 
+    public GameObject bowl;
+    public GameObject spoon;
 
 
 	// Use this for initialization
 	void Start () {
-
-
+        bowl.SetActive(false);
+        spoon.SetActive(false);
     }
 	
 	// Update is called once per frame
