@@ -52,7 +52,7 @@ public class GameManager1 : MonoBehaviour {
 	void Update () {
 
         gameTime -= Time.deltaTime;
-        print(gameTime);
+        //print(gameTime);
 
     }
     /*
