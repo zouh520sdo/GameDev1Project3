@@ -49,8 +49,10 @@ public class ChildManager : MonoBehaviour {
             spoon.SetActive(false);
         }
 
+        // For animation testing
+        /*
         print(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
-
+        */
         if (Input.GetKeyDown(KeyCode.Z))
         {
             SwitchToState(ChildrenAnimation.Cry);
