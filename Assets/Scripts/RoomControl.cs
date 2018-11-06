@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomControl : MonoBehaviour {
 
     public bool occupied;
+
     
     // Use this for initialization
 	void Start () {

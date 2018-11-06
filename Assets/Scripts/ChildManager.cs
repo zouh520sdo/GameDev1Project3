@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,11 +8,13 @@ public class ChildManager : MonoBehaviour {
 
     public Transform child_name;
     public GameManager1 game_manager;
-    public Vector3 spawnPoint; //destination for child to move to 
     public Transform prevRoom; //room that child was currently in 
     public Transform nextRoom; //next room for child to go to 
     public Transform[] available_rooms; //array of rooms available for child to go to 
-    public NavMeshAgent agent;
+    public UnityEngine.AI.NavMeshAgent agent;
+    public bool canMove;
+    public Door[] Doors;
+    //public Door currentDoor;
 
 
     public GameObject bowl;
@@ -26,6 +29,11 @@ public class ChildManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (canMove)
+        {
+            agent.destination = nextRoom.position;
+        }
 		
 	}
 
@@ -57,4 +65,5 @@ public class ChildManager : MonoBehaviour {
         }
 
     }
+
 }
