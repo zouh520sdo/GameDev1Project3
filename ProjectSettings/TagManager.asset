@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - isDoor
+  - Room
   layers:
   - Default
   - TransparentFX

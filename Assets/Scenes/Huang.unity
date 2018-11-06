@@ -15274,6 +15274,132 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50469ab69e6f5494386bd077cced6985, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1110699117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1775932839140184, guid: 50469ab69e6f5494386bd077cced6985,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110699116}
+--- !u!114 &1110699118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110699117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a53be4c488bb43ab4f6eb99759f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupied: 0
+  roomType: 1
+--- !u!1 &1110699119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1725659162340702, guid: 50469ab69e6f5494386bd077cced6985,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110699116}
+--- !u!1 &1110699120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1661871348199696, guid: 50469ab69e6f5494386bd077cced6985,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110699116}
+--- !u!1 &1110699121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1573962546102778, guid: 50469ab69e6f5494386bd077cced6985,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110699116}
+--- !u!1 &1110699122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1955778369733706, guid: 50469ab69e6f5494386bd077cced6985,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110699116}
+--- !u!1 &1110699123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1889506290930384, guid: 50469ab69e6f5494386bd077cced6985,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110699116}
+--- !u!1 &1110699124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1564563305915694, guid: 50469ab69e6f5494386bd077cced6985,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110699116}
+--- !u!114 &1110699125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110699119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a53be4c488bb43ab4f6eb99759f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupied: 0
+  roomType: 6
+--- !u!114 &1110699126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110699120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a53be4c488bb43ab4f6eb99759f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupied: 0
+  roomType: 5
+--- !u!114 &1110699127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110699121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a53be4c488bb43ab4f6eb99759f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupied: 0
+  roomType: 4
+--- !u!114 &1110699128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110699122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a53be4c488bb43ab4f6eb99759f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupied: 0
+  roomType: 4
+--- !u!114 &1110699129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110699123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a53be4c488bb43ab4f6eb99759f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupied: 0
+  roomType: 2
+--- !u!114 &1110699130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110699124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a53be4c488bb43ab4f6eb99759f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupied: 0
+  roomType: 3
 --- !u!1 &1111093487
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,8 @@ public class ChildManager : MonoBehaviour {
     public Door[] Doors;
     //public Door currentDoor;
 
+    public RoomControl roomControl;
+    
 
     public GameObject bowl;
     public GameObject spoon;
@@ -88,7 +90,15 @@ public class ChildManager : MonoBehaviour {
         }
     }
 
-     void OnTriggerStay(Collider other) //to keep track of where the child already was 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Room")
+        {
+            roomControl = other.GetComponent<RoomControl>();
+        }
+    }
+
+    void OnTriggerStay(Collider other) //to keep track of where the child already was 
     {
         if(other.gameObject.name == "LivingRoomTrigger")
         {
