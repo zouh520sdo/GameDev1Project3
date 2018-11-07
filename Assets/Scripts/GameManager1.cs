@@ -82,15 +82,17 @@ public class GameManager1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        timeElapsed = gameTime - Time.time;
-        if ((360 -timeElapsed)%60 >= 10)
-            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":" + ((int)(360 - timeElapsed) % 60);
+        float startSec = 9*60 - gameTime;
+
+        timeElapsed += Time.deltaTime;
+        if ((startSec + timeElapsed) %60 >= 10)
+            time.text = "" + ((int)((startSec + timeElapsed) / 60)) + ":" + ((int)((startSec + timeElapsed)) % 60);
         else
-            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":0" + ((int)(360 - timeElapsed) % 60);
+            time.text = "" + ((int)((startSec + timeElapsed) / 60)) + ":0" + ((int)((startSec + timeElapsed)) % 60);
 
         //  print(gameTime);
 
-        if (Time.time > gameTime)
+        if (timeElapsed > gameTime)
         {
           endGame();
           Debug.Log("game end");

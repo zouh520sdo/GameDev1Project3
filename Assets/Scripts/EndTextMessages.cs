@@ -100,6 +100,7 @@ public class EndTextMessages : MonoBehaviour
 
   public void SwitchScene()
   {
+    ScoreSummary.gameObject.SetActive(false);
     SceneManager.LoadScene("Title");
   }
 }
