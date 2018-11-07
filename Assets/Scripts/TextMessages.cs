@@ -2,18 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TextMessages : MonoBehaviour {
 
     public GameObject babysitter_text;
     public GameObject babysitterBubble;
     public GameObject button;
-    
-
+    public Button continueButton;
+  
 	// Use this for initialization
 	void Start () {
+
         StartCoroutine(ShowTextMessage());
+        continueButton.onClick.AddListener(SwitchScene);
+       
     }
 	
 	// Update is called once per frame
@@ -33,5 +37,10 @@ public class TextMessages : MonoBehaviour {
         
         
 
+    }
+
+    public void SwitchScene()
+    {
+        SceneManager.LoadScene(2);
     }
 }
