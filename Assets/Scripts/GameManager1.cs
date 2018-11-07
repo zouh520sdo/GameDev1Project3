@@ -40,7 +40,7 @@ public class GameManager1 : MonoBehaviour {
 
     // public Transform[] spawnPoints; //array of places children can move to 
 
-    public GameObject[] kids;
+    public static List<Kid> kids = new List<Kid>();
     
     public NavMeshAgent girlAgent; //for navMesh navigation
     public NavMeshAgent bad_boyAgent;
@@ -244,18 +244,25 @@ public class GameManager1 : MonoBehaviour {
 
     public void eat(ChildManager child, Transform sitTransform)
     {
-    if (bowl.activeSelf)
-    {
-      child.transform.position = sitTransform.position;
-      child.transform.rotation = sitTransform.rotation;
+        Debug.Log("attempting eat");
 
-      bowl.SetActive(false);
-      goodJobCounter++;
-      GlobalManager.instance.jobs.Add("Fed the child");
-      //child.isEatingBad = true;
-      child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
-    }
-    else sit(child, sitTransform);
+        if (bowl.activeSelf)
+        {
+          child.transform.position = sitTransform.position;
+          child.transform.rotation = sitTransform.rotation;
+
+          StartCoroutine(setOnOff(null,bowl,child.timeToEat));
+          Debug.Log("TTL: "+child.timeToEat);
+          goodJobCounter++;
+          GlobalManager.instance.jobs.Add("Fed the child");
+          //child.isEatingBad = true;
+          child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
+        }
+        else
+        {
+          child.isWaitingForFood = true;
+          sit(child, sitTransform);
+        }
     }
 
     public void hideBear(ChildManager child, Transform sitTransform)
@@ -276,7 +283,15 @@ public class GameManager1 : MonoBehaviour {
   {
 
     GlobalManager.instance.goodJobCounter = goodJobCounter;
+    kids.Clear();
     SceneManager.LoadScene("End");
     Debug.Log("END");
+  }
+
+  public IEnumerator setOnOff(GameObject o1, GameObject o2, float t)
+  {
+    yield return new WaitForSeconds(t);
+    if(o1 != null) o1.SetActive(true);
+    if (o2 != null) o2.SetActive(false);
   }
 }

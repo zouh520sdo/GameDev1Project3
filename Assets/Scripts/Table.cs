@@ -26,7 +26,17 @@ public class Table : Interactable {
             bowl.SetActive(true);
             _player.hasCookedFood = false;
 
-            //TODO if child, child eats
+            Debug.Log("Looping thru "+ GameManager1.kids.Count+" kids");
+            
+            //TODO if child @ table, child eats
+            for(int i = 0; i < GameManager1.kids.Count; i++)
+            {
+                Debug.Log(i+" is "+GameManager1.kids[i].isWaitingForFood());
+              if (GameManager1.kids[i].isWaitingForFood())
+              {
+                GameManager1.kids[i].giveFood();
+              }
+            }
         }
     }
 

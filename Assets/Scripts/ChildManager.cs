@@ -17,7 +17,6 @@ public class ChildManager : MonoBehaviour {
     //public Door currentDoor;
 
     public RoomControl roomControl;
-    
 
     public GameObject bowl;
     public GameObject spoon;
@@ -28,6 +27,8 @@ public class ChildManager : MonoBehaviour {
     public bool isCrying;
     public bool isHoldingBeer;
     public bool isEatingBad;
+    public bool isWaitingForFood;
+    public float timeToEat = 1f; //used for animation syncing
 
     private bool _needAction;
     private Animator _animator;
@@ -60,6 +61,8 @@ public class ChildManager : MonoBehaviour {
             isHoldingBeer = false;
         }
         isEatingBad = false;
+        isWaitingForFood = false;
+        timeToEat = 1f; //used for animation syncing
     }
 
     // Update is called once per frame
