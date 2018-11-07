@@ -8,13 +8,20 @@ public class RoomControl : MonoBehaviour {
 
     public Room roomType;
     public GameManager1 gamemanager;
+    public Transform sitTranform;
 
     public enum Action
     {
+        // Bathroom
         puke,
         flush,
         puckAndFlush,
-        beer
+
+        // Boys room
+        beer,
+        light,
+        sit,
+        crayon
     }
 
     public List<Action> actions;
@@ -71,6 +78,21 @@ public class RoomControl : MonoBehaviour {
             else if (action == Action.puckAndFlush)
             {
                 gamemanager.flushAndPuke();
+            }
+            else if (action == Action.sit)
+            {
+                gamemanager.sit(child, sitTranform);
+            }
+            else if (action == Action.beer)
+            {
+                if (child.tag == "Girl")
+                {
+                    gamemanager.sit(child, sitTranform);
+                }
+                else
+                {
+                    gamemanager.beer(child, sitTranform);
+                }
             }
         }
         catch (System.Exception)

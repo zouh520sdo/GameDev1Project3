@@ -56,7 +56,7 @@ public class GameManager1 : MonoBehaviour {
 
         goodJobCounter = 0;
 
-        InvokeRepeating("DetermineChoices", 3.0f, 22.0f); //start the game in 3 seconds, call this function every 22 seconds 
+        InvokeRepeating("DetermineChoices", 3.0f, 40.0f); //start the game in 3 seconds, call this function every 22 seconds 
         
         girlAgent.GetComponent<NavMeshAgent>();
         bad_boyAgent.GetComponent<NavMeshAgent>();
@@ -84,6 +84,9 @@ public class GameManager1 : MonoBehaviour {
 
         Transform girl_next = temp_girl_choices[girl_index];
         girl_manager.nextRoom = girl_next; //make that room the next girls room 
+        girl_manager.ResetChild();
+        girl_manager.agent.isStopped = false;
+        girl_manager.SwitchToState(ChildManager.ChildrenAnimation.Run);
 
         //for the bad boy ----------------------------------------
         List<Transform> temp_badBoy_choices = new List<Transform>(bad_boyChoices);
@@ -95,6 +98,9 @@ public class GameManager1 : MonoBehaviour {
         int badB_index = Random.Range(0, temp_badBoy_choices.Count); //get random index of what is left 
         Transform badB_next = temp_badBoy_choices[badB_index];
         badb_manager.nextRoom = badB_next;
+        badb_manager.ResetChild();
+        badb_manager.agent.isStopped = false;
+        badb_manager.SwitchToState(ChildManager.ChildrenAnimation.Run);
 
         //for the mild boy --------------------------------------
         List<Transform> temp_mildB_choices = new List<Transform>(mild_boyChoices);
@@ -107,31 +113,54 @@ public class GameManager1 : MonoBehaviour {
         int mildB_index = Random.Range(0, temp_mildB_choices.Count);
         Transform mildB_next = temp_mildB_choices[mildB_index];
         mildb_manager.nextRoom = mildB_next;
+        mildb_manager.ResetChild();
+        mildb_manager.agent.isStopped = false;
+        mildb_manager.SwitchToState(ChildManager.ChildrenAnimation.Run);
 
         //allow the navMeshes of the kids to move to their destionations 
         girl_manager.canMove = true;
         mildb_manager.canMove = true;
         badb_manager.canMove = true;
-        
-        
 
 
     }
    
+    // Puke
     public void pukeInToilet()
     {
         Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
     }
 
+    // Flush
     public void flushToilet()
     {
         // Playing flushing sound
     }
 
+    // Flush and puke
     public void flushAndPuke()
     {
         // Playing flushing sound
         Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
     }
 
+    public void sit(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+    }
+
+    public void beer(ChildManager child, Transform sitTransform)
+    {
+        if (child.beer)
+        {
+            child.beer.SetActive(true);
+        }
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+    }
 }

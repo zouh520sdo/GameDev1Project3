@@ -21,6 +21,7 @@ public class ChildManager : MonoBehaviour {
 
     public GameObject bowl;
     public GameObject spoon;
+    public GameObject beer;
 
     public Door bathroomDoor;
 
@@ -39,21 +40,30 @@ public class ChildManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         // For animations
-        bowl.SetActive(false);
-        spoon.SetActive(false);
+        ResetChild();
         _animator = GetComponent<Animator>();
         _needAction = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void ResetChild()
+    {
+        bowl.SetActive(false);
+        spoon.SetActive(false);
+        if (beer)
+        {
+            beer.SetActive(false);
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (canMove)
         {
             agent.destination = nextRoom.position;
         }
-		
-		if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "eat")
+
+        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "eat")
         {
             bowl.SetActive(true);
             spoon.SetActive(true);
@@ -95,6 +105,7 @@ public class ChildManager : MonoBehaviour {
 
         if (!agent.hasPath && _needAction && roomControl)
         {
+            agent.isStopped = true;
             _needAction = false;
             roomControl.takeAction(this);
         }

@@ -4337,7 +4337,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1527570990612114
 GameObject:
@@ -22832,7 +22832,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 679f55b7ed0d87545ae6f2f44dc804d0, type: 3}
@@ -25215,6 +25215,7 @@ MonoBehaviour:
   GirlChildManager: {fileID: 0}
   BadBoyManager: {fileID: 0}
   MildBoyManager: {fileID: 0}
+  canOpen: 0
   associatedRoom: {fileID: 0}
 --- !u!114 &114445597839528354
 MonoBehaviour:
@@ -25272,6 +25273,7 @@ MonoBehaviour:
   GirlChildManager: {fileID: 0}
   BadBoyManager: {fileID: 0}
   MildBoyManager: {fileID: 0}
+  canOpen: 0
   associatedRoom: {fileID: 0}
 --- !u!114 &114793610471519944
 MonoBehaviour:
@@ -25288,6 +25290,7 @@ MonoBehaviour:
   GirlChildManager: {fileID: 0}
   BadBoyManager: {fileID: 0}
   MildBoyManager: {fileID: 0}
+  canOpen: 0
   associatedRoom: {fileID: 0}
 --- !u!114 &114806186388719080
 MonoBehaviour:
@@ -25316,6 +25319,7 @@ MonoBehaviour:
   GirlChildManager: {fileID: 0}
   BadBoyManager: {fileID: 0}
   MildBoyManager: {fileID: 0}
+  canOpen: 0
   associatedRoom: {fileID: 0}
 --- !u!114 &114842937088329348
 MonoBehaviour:
