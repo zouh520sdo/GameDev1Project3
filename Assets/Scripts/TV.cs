@@ -59,7 +59,10 @@ public class TV : Interactable {
 
     public void StopTV()
     {
-        _videoPlayer.Stop();
+        if (_videoPlayer.isPlaying)
+        {
+            _videoPlayer.Stop();
+        }
     }
 
     public override void Interact()
