@@ -47,66 +47,66 @@ public class Microwave : Interactable {
 
     public void takeBear()
     {
-        bear.SetActive(false);
+        StartCoroutine(removeFromMicrowave(bear));
         bearInRoom.SetActive(true);
         _gm.goodJobCounter++;
+        GlobalManager.instance.jobs.Add("Took the bear out of the microwave");
     }
 
     public void takeCube()
     {
-        cube.SetActive(false);
+        StartCoroutine(removeFromMicrowave(cube));
         cubeInRoom.SetActive(true);
         _gm.goodJobCounter++;
+        GlobalManager.instance.jobs.Add("Took the cube out of the microwave");
     }
 
-    public override void Interact()
+    IEnumerator removeFromMicrowave(GameObject o)
+    {
+      yield return new WaitForSeconds(0.8f);
+      o.SetActive(false);
+    }
+
+  IEnumerator addToMicrowave(GameObject o)
+  {
+    yield return new WaitForSeconds(1.2f);
+    o.SetActive(true);
+  }
+
+  public override void Interact()
     {
         base.Interact();
 
-        microwaveAnimator.SetTrigger("Open");
-
-        if (bear.activeInHierarchy)
-        {
-            takeBear();
-        }
-        if (cube.activeInHierarchy)
-        {
-            takeCube();
-        }
-
-        /*
         if (!isCooking)
         {
             microwaveAnimator.SetTrigger("Open");
 
             if (cube.activeInHierarchy)
             {
-                cube.SetActive(false);
-                _player.hasCube = true;
+                takeCube();
             }
 
             if (bowl.activeInHierarchy)
             {
-                bowl.SetActive(false);
+                StartCoroutine(removeFromMicrowave(bowl));
                 _player.hasCookedFood = true;
             }
 
             if (bear.activeInHierarchy)
             {
-                bear.SetActive(false);
-                _player.hasBear = true;
-            }
+                 takeBear();
+            }  
 
             if (!bowl.activeInHierarchy && !cube.activeInHierarchy && !bear.activeInHierarchy)
             {
                 if (_player.hasBowl)
                 {
                     _player.hasBowl = false;
-                    bowl.SetActive(true);
+                    StartCoroutine(addToMicrowave(bowl));
                     StartCoroutine(cookingCountDown(cookingTime));
                 }
             }
-        }*/
+        }
     }
 
     IEnumerator cookingCountDown(float duration)
@@ -144,7 +144,14 @@ public class Microwave : Interactable {
           }
         }
       }
+
+      return "Check";
     }
-    return "Check";
+    return "Food is cooking";
+  }
+
+  public bool isAvailable()
+  {
+    return !isCooking && !bowl.activeInHierarchy && !cube.activeInHierarchy && !bear.activeInHierarchy;
   }
 }

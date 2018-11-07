@@ -24,18 +24,23 @@ public class Kid : Interactable {
         if (_cm.isCrying)
         {
             _gm.goodJobCounter++;
+            GlobalManager.instance.jobs.Add("Comforted a crying child");
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
             _cm.isCrying = false;
+            _cm.StopSound();
         }
         if (_cm.isEatingBad)
         {
             _gm.goodJobCounter++;
+            GlobalManager.instance.jobs.Add("Took junk food away from a child");
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
             _cm.isEatingBad = false;
+            _cm.StopSound();
         }
         if (_cm.isHoldingBeer)
         {
             _gm.goodJobCounter++;
+            GlobalManager.instance.jobs.Add("Took beer away from a child");
             _cm.beer.SetActive(false);
             _cm.isHoldingBeer = false;
         }
@@ -49,7 +54,7 @@ public class Kid : Interactable {
         }
         if (_cm.isEatingBad)
         {
-            return "Stop";
+            return "Take away junk food";
         }
         if (_cm.isHoldingBeer)
         {

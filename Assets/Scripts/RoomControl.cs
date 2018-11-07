@@ -63,7 +63,7 @@ public class RoomControl : MonoBehaviour {
         }
         else if (roomType == Room.kitchen)
         {
-            actions.Add(Action.sit);
+            //actions.Add(Action.sit);
             actions.Add(Action.hideCube);
             actions.Add(Action.hideBear);
             actions.Add(Action.eat);
@@ -93,7 +93,7 @@ public class RoomControl : MonoBehaviour {
 
             if (action == Action.puke)
             {
-                gamemanager.pukeInToilet();
+                gamemanager.pukeInToilet(child);
             }
             else if (action == Action.flush)
             {
@@ -101,7 +101,7 @@ public class RoomControl : MonoBehaviour {
             }
             else if (action == Action.puckAndFlush)
             {
-                gamemanager.flushAndPuke();
+                gamemanager.flushAndPuke(child);
             }
             else if (action == Action.sit)
             {
@@ -137,7 +137,13 @@ public class RoomControl : MonoBehaviour {
             }
             else if (action == Action.eat)
             {
-                gamemanager.eat(child, sitTranform);
+
+        Debug.Log("bowl is "+gamemanager.bowl.activeSelf);
+              if (gamemanager.bowl.activeSelf)
+              {
+                 gamemanager.eat(child, sitTranform);
+              }
+              else gamemanager.sit(child, sitTranform);
             }
             else if (action == Action.hideBear)
             {

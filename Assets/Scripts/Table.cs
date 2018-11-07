@@ -10,7 +10,7 @@ public class Table : Interactable {
 	// Use this for initialization
 	void Start () {
         _player = GameObject.Find("Player").GetComponent<Player>();
-        //bowl.SetActive(false);
+        bowl.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -25,6 +25,8 @@ public class Table : Interactable {
         {
             bowl.SetActive(true);
             _player.hasCookedFood = false;
+
+            //TODO if child, child eats
         }
     }
 

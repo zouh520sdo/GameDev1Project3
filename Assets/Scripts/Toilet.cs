@@ -47,15 +47,21 @@ public class Toilet : Interactable {
     public override void Interact()
     {
         base.Interact();
+        flush();
         if (poop.activeInHierarchy)
         {
             poop.SetActive(false);
             _gm.goodJobCounter++;
+            GlobalManager.instance.jobs.Add("Flushed the toilet");
         }
     }
 
     public override string getAction()
     {
-        return "Flush";
+    if (poop.activeInHierarchy)
+    {
+      return "flush";
     }
+    return "";
+  }
 }

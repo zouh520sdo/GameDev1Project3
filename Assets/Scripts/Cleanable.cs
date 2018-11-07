@@ -53,6 +53,7 @@ public class Cleanable : Interactable {
     public virtual void OnCleanUp()
     {
         _player.cleanable = null;
+        GlobalManager.instance.jobs.Add("Cleaned up a mess");
         gameManager.goodJobCounter++;
 
         // Detach particle system from this object and destroy itself after certain amount of delay

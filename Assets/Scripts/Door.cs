@@ -76,6 +76,6 @@ public class Door : Interactable {
       {
         return "Open door";
       }
-      else return "";
+      else return "Door is locked";
     }
 }

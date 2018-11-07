@@ -1,9 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(ChildManager))]
 public class GameManager1 : MonoBehaviour {
@@ -57,6 +57,8 @@ public class GameManager1 : MonoBehaviour {
 
     public int goodJobCounter;
 
+    public GameObject globalManager; //prefab of global manager
+    
     bool start_game; 
     
 	// Use this for initialization
@@ -70,6 +72,11 @@ public class GameManager1 : MonoBehaviour {
         bad_boyAgent.GetComponent<NavMeshAgent>();
         mild_boyAgent.GetComponent<NavMeshAgent>();
        
+      if (GlobalManager.instance == null)
+      {
+        Instantiate(globalManager);
+      }
+      GlobalManager.instance.reset();
 	}
 	
 	// Update is called once per frame
@@ -83,6 +90,12 @@ public class GameManager1 : MonoBehaviour {
 
         //  print(gameTime);
 
+        if (Time.time > gameTime)
+        {
+          endGame();
+          Debug.Log("game end");
+        }
+        
     }
 
     public IEnumerator ChooseNextRoom (ChildManager child, Transform next)
@@ -139,15 +152,17 @@ public class GameManager1 : MonoBehaviour {
         StartCoroutine(ChooseNextRoom(mildb_manager, mildB_next));
 
 
+
         // For bowl
-        bowl.SetActive(true);
+        //bowl.SetActive(true);
         // For TV
         tv.StopTV();
     }
    
     // Puke
-    public void pukeInToilet()
+    public void pukeInToilet(ChildManager child)
     {
+        child.PlayPukeSound();
         toilet.producePoop();
     }
 
@@ -159,10 +174,10 @@ public class GameManager1 : MonoBehaviour {
     }
 
     // Flush and puke
-    public void flushAndPuke()
+    public void flushAndPuke(ChildManager child)
     {
         // Playing puke sound
-
+        child.PlayPukeSound();
         // Playing flushing sound
         toilet.flush();
     }
@@ -201,6 +216,8 @@ public class GameManager1 : MonoBehaviour {
 
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
 
+        child.PlayLaughing();
+
         // Play good TV
         tv.PlayTV(tv.goodClip);
     }
@@ -223,6 +240,7 @@ public class GameManager1 : MonoBehaviour {
         child.transform.rotation = sitTransform.rotation;
 
         child.SwitchToState(ChildManager.ChildrenAnimation.Cry);
+        child.PlayCrying();
         child.isCrying = true;
         // Play sad TV
         tv.PlayTV(tv.sadClip);
@@ -230,29 +248,39 @@ public class GameManager1 : MonoBehaviour {
 
     public void eat(ChildManager child, Transform sitTransform)
     {
-        child.transform.position = sitTransform.position;
-        child.transform.rotation = sitTransform.rotation;
-
-        bowl.SetActive(false);
-        child.isEatingBad = true;
-        child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
+    if (bowl.activeSelf)
+    {
+      child.transform.position = sitTransform.position;
+      child.transform.rotation = sitTransform.rotation;
+            child.PlayEating();
+      bowl.SetActive(false);
+      goodJobCounter++;
+      GlobalManager.instance.jobs.Add("Fed the child");
+      //child.isEatingBad = true;
+      child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
+    }
+    else sit(child, sitTransform);
     }
 
     public void hideBear(ChildManager child, Transform sitTransform)
     {
-        child.transform.position = sitTransform.position;
-        child.transform.rotation = sitTransform.rotation;
+        if(microwave.isAvailable()) microwave.hideBear();
 
-        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
-        microwave.hideBear();
+        eat(child, sitTransform);
     }
 
     public void hideCube(ChildManager child, Transform sitTransform)
     {
-        child.transform.position = sitTransform.position;
-        child.transform.rotation = sitTransform.rotation;
+      if (microwave.isAvailable()) microwave.hideCube();
 
-        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
-        microwave.hideCube();
+      eat(child, sitTransform);
     }
+    
+  public void endGame()
+  {
+
+    GlobalManager.instance.goodJobCounter = goodJobCounter;
+    SceneManager.LoadScene("End");
+    Debug.Log("END");
+  }
 }
