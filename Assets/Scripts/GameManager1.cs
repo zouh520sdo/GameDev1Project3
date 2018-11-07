@@ -155,12 +155,16 @@ public class GameManager1 : MonoBehaviour {
     public void flushToilet()
     {
         // Playing flushing sound
+        toilet.flush();
     }
 
     // Flush and puke
     public void flushAndPuke()
     {
+        // Playing puke sound
+
         // Playing flushing sound
+        toilet.flush();
     }
 
     public void sit(ChildManager child, Transform sitTransform)

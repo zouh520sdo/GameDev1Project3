@@ -117,6 +117,7 @@ public class ChildManager : MonoBehaviour {
             agent.isStopped = true;
             _needAction = false;
             roomControl.takeAction(this);
+            //prevRoom = nextRoom;
         }
 
         if (agent.hasPath)
