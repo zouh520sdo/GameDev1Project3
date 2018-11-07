@@ -692,6 +692,7 @@ MonoBehaviour:
   babysitter_text: {fileID: 1252895132}
   babysitterBubble: {fileID: 1889910732}
   button: {fileID: 1968633056}
+  continueButton: {fileID: 1968633058}
 --- !u!4 &1222909176
 Transform:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class TextMessages : MonoBehaviour {
 	void Start () {
 
         StartCoroutine(ShowTextMessage());
-      //  continueButton.onClick.AddListener(SwitchScene());
+        continueButton.onClick.AddListener(SwitchScene);
        
     }
 	
@@ -39,8 +39,8 @@ public class TextMessages : MonoBehaviour {
 
     }
 
-    public void SwitchScene(int i)
+    public void SwitchScene()
     {
-        SceneManager.LoadScene(i);
+        SceneManager.LoadScene(2);
     }
 }
