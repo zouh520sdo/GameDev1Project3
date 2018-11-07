@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(ChildManager))]
@@ -33,7 +34,9 @@ public class GameManager1 : MonoBehaviour {
     public Transform kitchen;
     public Transform bathroom;
 
+    public Text time;
     public float gameTime = 360; //game is 6 minutes long, so 360 seconds 
+    private float timeElapsed = 0;
 
     // public Transform[] spawnPoints; //array of places children can move to 
 
@@ -67,8 +70,13 @@ public class GameManager1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        gameTime -= Time.deltaTime;
-      //  print(gameTime);
+        timeElapsed = gameTime - Time.time;
+        if ((360 -timeElapsed)%60 >= 10)
+            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":" + ((int)(360 - timeElapsed) % 60);
+        else
+            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":0" + ((int)(360 - timeElapsed) % 60);
+
+        //  print(gameTime);
 
     }
 
