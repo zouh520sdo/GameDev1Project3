@@ -34,7 +34,7 @@ public class Title : MonoBehaviour {
 
   void LoadGameplay()
   {
-    SceneManager.LoadScene("Gameplay");
+    SceneManager.LoadScene("Intro");
   }
 
   void ToggleCredits()
