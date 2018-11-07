@@ -25,6 +25,11 @@ public class Title : MonoBehaviour {
     rotation.y += rotationSpeed * Time.deltaTime; // Standart Left-/Right Arrows and A & D Keys
 
     transform.eulerAngles = rotation;
+
+    if (Input.GetKey("escape"))
+    {
+      Application.Quit();
+    }
   }
 
   void LoadGameplay()
