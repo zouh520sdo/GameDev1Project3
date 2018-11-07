@@ -95,7 +95,7 @@ public class GameManager1 : MonoBehaviour {
 
         //  print(gameTime);
 
-        if (timeElapsed > gameTime)
+        if (timeElapsed > gameTime || Input.GetKeyDown(KeyCode.Escape)) 
         {
           endGame();
           Debug.Log("game end");
