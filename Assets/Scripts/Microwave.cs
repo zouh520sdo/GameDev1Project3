@@ -149,4 +149,9 @@ public class Microwave : Interactable {
     }
     return "Food is cooking";
   }
+
+  public bool isAvailable()
+  {
+    return !isCooking && !bowl.activeInHierarchy && !cube.activeInHierarchy && !bear.activeInHierarchy;
+  }
 }

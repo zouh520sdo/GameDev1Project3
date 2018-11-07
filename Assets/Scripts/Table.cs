@@ -25,6 +25,8 @@ public class Table : Interactable {
         {
             bowl.SetActive(true);
             _player.hasCookedFood = false;
+
+            //TODO if child, child eats
         }
     }
 
