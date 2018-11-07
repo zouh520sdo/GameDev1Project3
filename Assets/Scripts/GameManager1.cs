@@ -51,6 +51,9 @@ public class GameManager1 : MonoBehaviour {
     public Transform pukeTransform;
     public GameObject crayonPrefab;
     public TV tv;
+    public Microwave microwave;
+    public GameObject bowl;
+    public Toilet toilet;
 
     public int goodJobCounter;
 
@@ -82,6 +85,23 @@ public class GameManager1 : MonoBehaviour {
 
     }
 
+    public IEnumerator ChooseNextRoom (ChildManager child, Transform next)
+    {
+        float timestamp = Time.time;
+        child.SwitchToState(ChildManager.ChildrenAnimation.Idle);
+
+        while (Time.time - timestamp < 3)
+        {
+            yield return null;
+        }
+
+        child.nextRoom = next;
+        child.ResetChild();
+        child.agent.isStopped = false;
+        child.SwitchToState(ChildManager.ChildrenAnimation.Run);
+        child.canMove = true;
+    }
+
     public void DetermineChoices()
     {
         //for the girl -------------------------------------------
@@ -93,10 +113,7 @@ public class GameManager1 : MonoBehaviour {
         int girl_index = Random.Range(0, temp_girl_choices.Count); //determine next room randomly 
 
         Transform girl_next = temp_girl_choices[girl_index];
-        girl_manager.nextRoom = girl_next; //make that room the next girls room 
-        girl_manager.ResetChild();
-        girl_manager.agent.isStopped = false;
-        girl_manager.SwitchToState(ChildManager.ChildrenAnimation.Run);
+        StartCoroutine(ChooseNextRoom(girl_manager, girl_next));
 
         //for the bad boy ----------------------------------------
         List<Transform> temp_badBoy_choices = new List<Transform>(bad_boyChoices);
@@ -107,10 +124,7 @@ public class GameManager1 : MonoBehaviour {
         temp_badBoy_choices.Remove(girl_next); //remove the girls next choice from bad boys choices 
         int badB_index = Random.Range(0, temp_badBoy_choices.Count); //get random index of what is left 
         Transform badB_next = temp_badBoy_choices[badB_index];
-        badb_manager.nextRoom = badB_next;
-        badb_manager.ResetChild();
-        badb_manager.agent.isStopped = false;
-        badb_manager.SwitchToState(ChildManager.ChildrenAnimation.Run);
+        StartCoroutine(ChooseNextRoom(badb_manager, badB_next));
 
         //for the mild boy --------------------------------------
         List<Transform> temp_mildB_choices = new List<Transform>(mild_boyChoices);
@@ -122,23 +136,19 @@ public class GameManager1 : MonoBehaviour {
         temp_mildB_choices.Remove(badB_next); //remove the bad boys next room 
         int mildB_index = Random.Range(0, temp_mildB_choices.Count);
         Transform mildB_next = temp_mildB_choices[mildB_index];
-        mildb_manager.nextRoom = mildB_next;
-        mildb_manager.ResetChild();
-        mildb_manager.agent.isStopped = false;
-        mildb_manager.SwitchToState(ChildManager.ChildrenAnimation.Run);
-
-        //allow the navMeshes of the kids to move to their destionations 
-        girl_manager.canMove = true;
-        mildb_manager.canMove = true;
-        badb_manager.canMove = true;
+        StartCoroutine(ChooseNextRoom(mildb_manager, mildB_next));
 
 
+        // For bowl
+        bowl.SetActive(true);
+        // For TV
+        tv.StopTV();
     }
    
     // Puke
     public void pukeInToilet()
     {
-        Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
+        toilet.producePoop();
     }
 
     // Flush
@@ -151,7 +161,6 @@ public class GameManager1 : MonoBehaviour {
     public void flushAndPuke()
     {
         // Playing flushing sound
-        Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
     }
 
     public void sit(ChildManager child, Transform sitTransform)
@@ -167,6 +176,7 @@ public class GameManager1 : MonoBehaviour {
         if (child.beer)
         {
             child.beer.SetActive(true);
+            child.isHoldingBeer = true;
         }
         child.transform.position = sitTransform.position;
         child.transform.rotation = sitTransform.rotation;
@@ -188,7 +198,7 @@ public class GameManager1 : MonoBehaviour {
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
 
         // Play good TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.goodClip);
     }
 
     public void badTV(ChildManager child, Transform sitTransform)
@@ -200,7 +210,7 @@ public class GameManager1 : MonoBehaviour {
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
 
         // Play bad TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.badClip);
     }
 
     public void sadTV(ChildManager child, Transform sitTransform)
@@ -209,7 +219,36 @@ public class GameManager1 : MonoBehaviour {
         child.transform.rotation = sitTransform.rotation;
 
         child.SwitchToState(ChildManager.ChildrenAnimation.Cry);
+        child.isCrying = true;
         // Play sad TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.sadClip);
+    }
+
+    public void eat(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        bowl.SetActive(false);
+        child.isEatingBad = true;
+        child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
+    }
+
+    public void hideBear(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+        microwave.hideBear();
+    }
+
+    public void hideCube(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+        microwave.hideCube();
     }
 }
