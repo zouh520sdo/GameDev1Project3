@@ -12,7 +12,10 @@ public class Player : MonoBehaviour {
     public float sensitivity = 1f;
 
     // Inventory
-    public List<GameObject> inventory;
+    public bool hasBowl;
+    public bool hasCookedFood;
+    public bool hasCube;
+    public bool hasBear;
 
     // Room player are current 
     public Room room;
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour {
     }
     private Cleanable _cleanable;
     private float cleanSliderTimeStamp = -1;
+
+
     IEnumerator HideSliderInactive ()
     {
         cleanSliderTimeStamp = Time.time;
@@ -74,7 +79,10 @@ public class Player : MonoBehaviour {
         Cursor.visible = true;
 
         // Initialization
-        inventory = new List<GameObject>();
+        hasBowl = false;
+        hasCookedFood = false;
+        hasCube = false;
+        hasBear = false;
         room = Room.none;
 
         centerIcon.sprite = circleSprite;

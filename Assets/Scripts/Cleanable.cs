@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cleanable : Interactable {
 
+    public GameManager1 gameManager;
+
     public ParticleSystem cleanParticle;
     private ParticleSystem.EmissionModule _em;
     public float _completeness;
@@ -22,10 +24,12 @@ public class Cleanable : Interactable {
 
         _em = cleanParticle.emission;
         _em.rateOverTime = 0;
+
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager1>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         _completeness = Mathf.Max(0, _completeness - _fallOffSpeed * Time.deltaTime);
 
         _em.rateOverTime = Mathf.Min(150f, 150f * Mathf.Pow(_completeness / _fullCompleteness, 2));
@@ -49,6 +53,7 @@ public class Cleanable : Interactable {
     public virtual void OnCleanUp()
     {
         _player.cleanable = null;
+        gameManager.goodJobCounter++;
 
         // Detach particle system from this object and destroy itself after certain amount of delay
         _em.rateOverTime = 0;

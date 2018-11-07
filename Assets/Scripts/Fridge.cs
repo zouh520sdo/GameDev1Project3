@@ -6,9 +6,10 @@ public class Fridge : Interactable {
 
     public Animator fridgeAnimator;
 
+    private Player _player;
 	// Use this for initialization
 	void Start () {
-
+        _player = GameObject.Find("Player").GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
@@ -20,5 +21,6 @@ public class Fridge : Interactable {
     {
         base.Interact();
         fridgeAnimator.SetTrigger("Open");
+        _player.hasBowl = true;
     }
 }
