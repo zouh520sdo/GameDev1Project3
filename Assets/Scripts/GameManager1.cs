@@ -46,6 +46,8 @@ public class GameManager1 : MonoBehaviour {
     // Prefabs for events
     public GameObject pukeObject;
     public Transform pukeTransform;
+    public GameObject crayonPrefab;
+    public TV tv;
 
     public int goodJobCounter;
 
@@ -162,5 +164,44 @@ public class GameManager1 : MonoBehaviour {
         child.transform.rotation = sitTransform.rotation;
 
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+    }
+
+    public void crayon(Transform crayonTransform)
+    {
+        Instantiate(crayonPrefab, crayonTransform.position, crayonTransform.rotation);
+    }
+
+    public void goodTV(ChildManager child, Transform sitTransform)
+    {
+        // Sit
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+
+        // Play good TV
+        tv.PlayTV(tv.videoClip);
+    }
+
+    public void badTV(ChildManager child, Transform sitTransform)
+    {
+        // Sit
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+
+        // Play bad TV
+        tv.PlayTV(tv.videoClip);
+    }
+
+    public void sadTV(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.Cry);
+        // Play sad TV
+        tv.PlayTV(tv.videoClip);
     }
 }

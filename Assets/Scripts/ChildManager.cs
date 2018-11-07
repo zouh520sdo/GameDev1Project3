@@ -103,8 +103,10 @@ public class ChildManager : MonoBehaviour {
             SwitchToState(ChildrenAnimation.Walk);
         }
 
+        // Reach destination
         if (!agent.hasPath && _needAction && roomControl)
         {
+            SwitchToState(ChildrenAnimation.Idle);
             agent.isStopped = true;
             _needAction = false;
             roomControl.takeAction(this);
