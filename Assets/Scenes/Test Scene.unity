@@ -374,7 +374,8 @@ MonoBehaviour:
   boys_room: {fileID: 1082318677}
   kitchen: {fileID: 867012310}
   bathroom: {fileID: 302973281}
-  gameTime: 360
+  time: {fileID: 1954871548}
+  gameTime: 5
   kids:
   - {fileID: 1159369748629192, guid: 44515a17a8688b34c942a51148af3a27, type: 2}
   - {fileID: 1707505877458654, guid: cc9e7381bb404bf40adbb499c7c91702, type: 2}
@@ -384,7 +385,11 @@ MonoBehaviour:
   mild_boyAgent: {fileID: 418680413}
   pukeObject: {fileID: 1013329644622592, guid: 569ea6f58182b9442979928b5ef54a20, type: 2}
   pukeTransform: {fileID: 854830337}
+  crayonPrefab: {fileID: 0}
+  tv: {fileID: 0}
   goodJobCounter: 0
+  globalManager: {fileID: 1929373652069228, guid: c8b83b84e0044ae4eb6d17f478a85ce3,
+    type: 2}
 --- !u!1 &224198180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,6 +2181,7 @@ MonoBehaviour:
   roomType: 1
   gamemanager: {fileID: 167461222}
   sitTranform: {fileID: 0}
+  crayonTransform: {fileID: 0}
   actions: 
 --- !u!1 &1110699119 stripped
 GameObject:
@@ -2222,6 +2228,7 @@ MonoBehaviour:
   roomType: 6
   gamemanager: {fileID: 167461222}
   sitTranform: {fileID: 0}
+  crayonTransform: {fileID: 0}
   actions: 
 --- !u!114 &1110699126
 MonoBehaviour:
@@ -2238,6 +2245,7 @@ MonoBehaviour:
   roomType: 5
   gamemanager: {fileID: 167461222}
   sitTranform: {fileID: 0}
+  crayonTransform: {fileID: 0}
   actions: 
 --- !u!114 &1110699127
 MonoBehaviour:
@@ -2254,6 +2262,7 @@ MonoBehaviour:
   roomType: 4
   gamemanager: {fileID: 167461222}
   sitTranform: {fileID: 0}
+  crayonTransform: {fileID: 0}
   actions: 
 --- !u!114 &1110699128
 MonoBehaviour:
@@ -2270,6 +2279,7 @@ MonoBehaviour:
   roomType: 4
   gamemanager: {fileID: 167461222}
   sitTranform: {fileID: 0}
+  crayonTransform: {fileID: 0}
   actions: 
 --- !u!114 &1110699129
 MonoBehaviour:
@@ -2286,6 +2296,7 @@ MonoBehaviour:
   roomType: 2
   gamemanager: {fileID: 167461222}
   sitTranform: {fileID: 953059260}
+  crayonTransform: {fileID: 0}
   actions: 
 --- !u!114 &1110699130
 MonoBehaviour:
@@ -2302,6 +2313,7 @@ MonoBehaviour:
   roomType: 3
   gamemanager: {fileID: 167461222}
   sitTranform: {fileID: 253914843}
+  crayonTransform: {fileID: 0}
   actions: 
 --- !u!1 &1187084874
 GameObject:

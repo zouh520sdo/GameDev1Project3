@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(ChildManager))]
@@ -54,6 +55,8 @@ public class GameManager1 : MonoBehaviour {
 
     public int goodJobCounter;
 
+    public GameObject globalManager; //prefab of global manager
+
     bool start_game; 
     
 	// Use this for initialization
@@ -66,21 +69,35 @@ public class GameManager1 : MonoBehaviour {
         girlAgent.GetComponent<NavMeshAgent>();
         bad_boyAgent.GetComponent<NavMeshAgent>();
         mild_boyAgent.GetComponent<NavMeshAgent>();
-       
-	}
+
+      if (GlobalManager.instance == null)
+    {
+      Instantiate(globalManager);
+      
+    }
+    Debug.Log(GlobalManager.instance);
+  }
 	
 	// Update is called once per frame
 	void Update () {
 
-        timeElapsed = gameTime - Time.time;
-        if ((360 -timeElapsed)%60 >= 10)
-            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":" + ((int)(360 - timeElapsed) % 60);
-        else
-            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":0" + ((int)(360 - timeElapsed) % 60);
-
-        //  print(gameTime);
-
+    if (false)
+    {
+      timeElapsed = gameTime - Time.time;
+      if ((360 - timeElapsed) % 60 >= 10)
+        time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":" + ((int)(360 - timeElapsed) % 60);
+      else
+        time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":0" + ((int)(360 - timeElapsed) % 60);
     }
+
+    //  print(gameTime);
+
+      if (Time.time > gameTime)
+        {
+           endGame();
+           Debug.Log("game end");
+        }
+  }
 
     public void DetermineChoices()
     {
@@ -212,4 +229,12 @@ public class GameManager1 : MonoBehaviour {
         // Play sad TV
         tv.PlayTV(tv.videoClip);
     }
+
+    public void endGame()
+    {
+      
+      GlobalManager.instance.goodJobCounter = 5 + goodJobCounter;
+      SceneManager.LoadScene("End");
+      Debug.Log("END");
+  }
 }
