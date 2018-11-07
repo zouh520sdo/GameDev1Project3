@@ -22,6 +22,8 @@ public class ChildManager : MonoBehaviour {
     public GameObject bowl;
     public GameObject spoon;
 
+    public Door bathroomDoor;
+
     private bool _needAction;
     private Animator _animator;
     public enum ChildrenAnimation
@@ -108,6 +110,21 @@ public class ChildManager : MonoBehaviour {
         if (other.tag == "Room")
         {
             roomControl = other.GetComponent<RoomControl>();
+            if (roomControl.roomType == Room.bathroom)
+            {
+                bathroomDoor.canOpen = false;
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Room")
+        {
+            if (roomControl.roomType == Room.bathroom)
+            {
+                bathroomDoor.canOpen = true;
+            }
         }
     }
 

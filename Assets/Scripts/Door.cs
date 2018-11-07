@@ -29,7 +29,10 @@ public class Door : Interactable {
     public override void Interact()
     {
         base.Interact();
-        doorAnimator.SetTrigger("trigger");
+        if (canOpen)
+        {
+            doorAnimator.SetTrigger("trigger");
+        }
     }
 
     public void OpenCloseDoor()

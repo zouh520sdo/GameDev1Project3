@@ -364,11 +364,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4244496517891854, guid: 569ea6f58182b9442979928b5ef54a20, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1013329644622592, guid: 569ea6f58182b9442979928b5ef54a20, type: 2}
       propertyPath: m_Name
       value: cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 114528784649959334, guid: 569ea6f58182b9442979928b5ef54a20,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 569ea6f58182b9442979928b5ef54a20, type: 2}
@@ -429,6 +434,7 @@ MonoBehaviour:
   mild_boyAgent: {fileID: 418680413}
   pukeObject: {fileID: 1013329644622592, guid: 569ea6f58182b9442979928b5ef54a20, type: 2}
   pukeTransform: {fileID: 854830337}
+  goodJobCounter: 0
 --- !u!1 &224198180
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +773,10 @@ Prefab:
     - target: {fileID: 1360557002157574, guid: 6d88b0ce2177d7a4e8bfb52499b551c9, type: 2}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472335362297446, guid: 6d88b0ce2177d7a4e8bfb52499b551c9, type: 2}
+      propertyPath: m_TagString
+      value: MildBoy
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114402413158847990, guid: 6d88b0ce2177d7a4e8bfb52499b551c9, type: 2}
@@ -1859,6 +1869,15 @@ Prefab:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114920738275014146, guid: 44515a17a8688b34c942a51148af3a27,
+        type: 2}
+      propertyPath: bathroomDoor
+      value: 
+      objectReference: {fileID: 1325954412}
+    - target: {fileID: 1159369748629192, guid: 44515a17a8688b34c942a51148af3a27, type: 2}
+      propertyPath: m_TagString
+      value: Girl
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44515a17a8688b34c942a51148af3a27, type: 2}
   m_IsPrefabAsset: 0
@@ -2032,7 +2051,7 @@ MonoBehaviour:
   occupied: 0
   roomType: 1
   gamemanager: {fileID: 167461222}
-  actions: []
+  actions: 
 --- !u!1 &1110699119 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1725659162340702, guid: 50469ab69e6f5494386bd077cced6985,
@@ -2077,7 +2096,7 @@ MonoBehaviour:
   occupied: 0
   roomType: 6
   gamemanager: {fileID: 167461222}
-  actions: []
+  actions: 
 --- !u!114 &1110699126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2092,7 +2111,7 @@ MonoBehaviour:
   occupied: 0
   roomType: 5
   gamemanager: {fileID: 167461222}
-  actions: []
+  actions: 
 --- !u!114 &1110699127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2107,7 +2126,7 @@ MonoBehaviour:
   occupied: 0
   roomType: 4
   gamemanager: {fileID: 167461222}
-  actions: []
+  actions: 
 --- !u!114 &1110699128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2122,7 +2141,7 @@ MonoBehaviour:
   occupied: 0
   roomType: 4
   gamemanager: {fileID: 167461222}
-  actions: []
+  actions: 
 --- !u!114 &1110699129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2137,7 +2156,7 @@ MonoBehaviour:
   occupied: 0
   roomType: 2
   gamemanager: {fileID: 167461222}
-  actions: []
+  actions: 
 --- !u!114 &1110699130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,7 +2171,7 @@ MonoBehaviour:
   occupied: 0
   roomType: 3
   gamemanager: {fileID: 167461222}
-  actions: []
+  actions: 
 --- !u!1 &1187084874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,7 +2204,7 @@ Transform:
   - {fileID: 867012310}
   - {fileID: 302973281}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1210410162
 GameObject:
@@ -2678,6 +2697,15 @@ Prefab:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114821389602914292, guid: cc9e7381bb404bf40adbb499c7c91702,
+        type: 2}
+      propertyPath: bathroomDoor
+      value: 
+      objectReference: {fileID: 1325954412}
+    - target: {fileID: 1707505877458654, guid: cc9e7381bb404bf40adbb499c7c91702, type: 2}
+      propertyPath: m_TagString
+      value: BadBoy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114144414079959950, guid: cc9e7381bb404bf40adbb499c7c91702, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: cc9e7381bb404bf40adbb499c7c91702, type: 2}
@@ -2780,6 +2808,7 @@ MonoBehaviour:
   roomControl: {fileID: 0}
   bowl: {fileID: 588036683}
   spoon: {fileID: 1766186573}
+  bathroomDoor: {fileID: 1325954412}
 --- !u!4 &1614782143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4961676237355808, guid: cc9e7381bb404bf40adbb499c7c91702,

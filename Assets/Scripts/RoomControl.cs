@@ -9,24 +9,34 @@ public class RoomControl : MonoBehaviour {
     public Room roomType;
     public GameManager1 gamemanager;
 
-    public List<string> actions;
+    public enum Action
+    {
+        puke,
+        flush,
+        puckAndFlush,
+        beer
+    }
+
+    public List<Action> actions;
     
     // Use this for initialization
 	void Start () {
 
-        actions = new List<string>();
+        actions = new List<Action>();
 		
         if (roomType == Room.bathroom)
         {
-            actions.Add("puke");
+            actions.Add(Action.puke);
+            actions.Add(Action.flush); 
+            actions.Add(Action.puckAndFlush);
         }
         else if (roomType == Room.boysroom)
         {
-
+            actions.Add(Action.beer);
         }
         else if (roomType == Room.girlroom)
         {
-
+            actions.Add(Action.beer);
         }
         else if (roomType == Room.kitchen)
         {
@@ -47,12 +57,20 @@ public class RoomControl : MonoBehaviour {
     {
         try
         {
-            string action = actions[Random.Range(0, actions.Count)];
+            Action action = actions[Random.Range(0, actions.Count)];
             print(name + " pick action " + action);
 
-            if (action == "puke")
+            if (action == Action.puke)
             {
                 gamemanager.pukeInToilet();
+            }
+            else if (action == Action.flush)
+            {
+                gamemanager.flushToilet();
+            }
+            else if (action == Action.puckAndFlush)
+            {
+                gamemanager.flushAndPuke();
             }
         }
         catch (System.Exception)
