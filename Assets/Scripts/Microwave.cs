@@ -69,7 +69,7 @@ public class Microwave : Interactable {
 
   IEnumerator addToMicrowave(GameObject o)
   {
-    yield return new WaitForSeconds(1f);
+    yield return new WaitForSeconds(1.2f);
     o.SetActive(true);
   }
 
@@ -144,7 +144,9 @@ public class Microwave : Interactable {
           }
         }
       }
+
+      return "Check";
     }
-    return "Check";
+    return "Food is cooking";
   }
 }
