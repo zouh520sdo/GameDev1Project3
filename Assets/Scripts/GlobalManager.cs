@@ -34,7 +34,7 @@ public class GlobalManager : MonoBehaviour {
 
 	}
 
-  void reset()
+  public void reset()
   {
     goodJobCounter = 0;
     jobs = new List<string>();

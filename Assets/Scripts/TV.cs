@@ -74,7 +74,8 @@ public class TV : Interactable {
             _currentFrame = _videoPlayer.frame;
             _videoPlayer.Stop();
             if (_videoPlayer.clip == badClip) {
-                _gm.goodJobCounter++;
+              GlobalManager.instance.jobs.Add("Turned off the TV when an upsetting video was playing");
+              _gm.goodJobCounter++;
             }
         }
     }
@@ -83,7 +84,7 @@ public class TV : Interactable {
     {
         if (_videoPlayer.isPlaying)
         {
-            return "Close TV";
+            return "Turn off TV";
         }
 
         return "";

@@ -50,6 +50,7 @@ public class Microwave : Interactable {
         bear.SetActive(false);
         bearInRoom.SetActive(true);
         _gm.goodJobCounter++;
+        GlobalManager.instance.jobs.Add("Took the bear out of the microwave");
     }
 
     public void takeCube()
@@ -57,6 +58,7 @@ public class Microwave : Interactable {
         cube.SetActive(false);
         cubeInRoom.SetActive(true);
         _gm.goodJobCounter++;
+        GlobalManager.instance.jobs.Add("Took the cube out of the microwave");
     }
 
     public override void Interact()

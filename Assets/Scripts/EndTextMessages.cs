@@ -15,13 +15,17 @@ public class EndTextMessages : MonoBehaviour
   public GameObject button;
   public Button continueButton;
 
+  public GameObject allPhone;
+  public Text ScoreSummary;
+
   // Use this for initialization
   void Start()
   {
     Cursor.visible = true;
+    Cursor.lockState = CursorLockMode.None;
 
     StartCoroutine(ShowTextMessage());
-    continueButton.onClick.AddListener(SwitchScene);
+    continueButton.onClick.AddListener(summarizeScore);
   }
 
   // Update is called once per frame
@@ -74,8 +78,28 @@ public class EndTextMessages : MonoBehaviour
     momBubble.SetActive(true);
   }
 
+  public void summarizeScore()
+  {
+    allPhone.SetActive(false);
+    ScoreSummary.gameObject.SetActive(true);
+    StartCoroutine(listScoreItems());
+    continueButton.onClick.AddListener(SwitchScene);
+  }
+
+  IEnumerator listScoreItems()
+  {
+    ScoreSummary.text = "SUMMARY OF SCORE:\n\n";
+    for (int i = 0; i < GlobalManager.instance.jobs.Count; i++)
+    {
+      yield return new WaitForSeconds(0.4f);
+      ScoreSummary.text += GlobalManager.instance.jobs[i]+" (+1pts)\n";
+    }
+    yield return new WaitForSeconds(0.4f);
+    ScoreSummary.text += "\nTOTAL SCORE: "+GlobalManager.instance.goodJobCounter.ToString()+" POINTS"; ;
+  }
+
   public void SwitchScene()
   {
-    SceneManager.LoadScene(2);
+    SceneManager.LoadScene("Title");
   }
 }

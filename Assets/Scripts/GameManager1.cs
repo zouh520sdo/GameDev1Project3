@@ -76,7 +76,7 @@ public class GameManager1 : MonoBehaviour {
       {
         Instantiate(globalManager);
       }
-      globalManager.reset();
+      GlobalManager.instance.reset();
 	}
 	
 	// Update is called once per frame

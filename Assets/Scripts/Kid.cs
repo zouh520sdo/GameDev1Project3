@@ -24,18 +24,21 @@ public class Kid : Interactable {
         if (_cm.isCrying)
         {
             _gm.goodJobCounter++;
+            GlobalManager.instance.jobs.Add("Comforted a crying child");
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
             _cm.isCrying = false;
         }
         if (_cm.isEatingBad)
         {
             _gm.goodJobCounter++;
+            GlobalManager.instance.jobs.Add("Took junk food away from a child");
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
             _cm.isEatingBad = false;
         }
         if (_cm.isHoldingBeer)
         {
             _gm.goodJobCounter++;
+            GlobalManager.instance.jobs.Add("Took beer away from a child");
             _cm.beer.SetActive(false);
             _cm.isHoldingBeer = false;
         }
