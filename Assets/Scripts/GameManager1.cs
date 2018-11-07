@@ -58,12 +58,14 @@ public class GameManager1 : MonoBehaviour {
     public int goodJobCounter;
 
     public GameObject globalManager; //prefab of global manager
+
+    public GameObject ceiling;
     
     bool start_game; 
     
 	// Use this for initialization
 	void Start () {
-
+        ceiling.SetActive(true);
         goodJobCounter = 0;
 
         InvokeRepeating("DetermineChoices", 3.0f, 40.0f); //start the game in 3 seconds, call this function every 22 seconds 
