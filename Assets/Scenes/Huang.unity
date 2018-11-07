@@ -944,6 +944,26 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23446444214577326, guid: 864308bdc0241dc408ce6fa66e40ca3c,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db1ba236eeda60b4eafbc4774af399eb, type: 2}
+    - target: {fileID: 23215815566746172, guid: 864308bdc0241dc408ce6fa66e40ca3c,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db1ba236eeda60b4eafbc4774af399eb, type: 2}
+    - target: {fileID: 23851065615150930, guid: 864308bdc0241dc408ce6fa66e40ca3c,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db1ba236eeda60b4eafbc4774af399eb, type: 2}
+    - target: {fileID: 23074605451114050, guid: 864308bdc0241dc408ce6fa66e40ca3c,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db1ba236eeda60b4eafbc4774af399eb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 864308bdc0241dc408ce6fa66e40ca3c, type: 2}
   m_IsPrefabAsset: 0
