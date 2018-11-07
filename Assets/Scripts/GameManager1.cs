@@ -35,6 +35,7 @@ public class GameManager1 : MonoBehaviour {
     public Transform bathroom;
 
     public Text time;
+    private float startTime = 0;
     public float gameTime = 360; //game is 6 minutes long, so 360 seconds 
     private float timeElapsed = 0;
 
@@ -66,12 +67,14 @@ public class GameManager1 : MonoBehaviour {
 
         goodJobCounter = 0;
 
-        InvokeRepeating("DetermineChoices", 3.0f, 40.0f); //start the game in 3 seconds, call this function every 22 seconds 
+        InvokeRepeating("DetermineChoices", 3.0f, 20.0f); //start the game in 3 seconds, call this function every 22 seconds 
         
         girlAgent.GetComponent<NavMeshAgent>();
         bad_boyAgent.GetComponent<NavMeshAgent>();
         mild_boyAgent.GetComponent<NavMeshAgent>();
-       
+
+        startTime = Time.time;
+
       if (GlobalManager.instance == null)
       {
         Instantiate(globalManager);
@@ -82,11 +85,11 @@ public class GameManager1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        timeElapsed = gameTime - Time.time;
-        if ((360 -timeElapsed)%60 >= 10)
-            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":" + ((int)(360 - timeElapsed) % 60);
+        timeElapsed = gameTime - (Time.time-startTime);
+        if ((2*(gameTime -timeElapsed))%60 >= 10)
+            time.text = "" + ((int)(3 + 2*(gameTime - timeElapsed) / 60)) + ":" + ((int)(2*(gameTime - timeElapsed) % 60));
         else
-            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":0" + ((int)(360 - timeElapsed) % 60);
+            time.text = "" + ((int)(3 + 2*(gameTime - timeElapsed) / 60)) + ":0" + ((int)(2*(gameTime - timeElapsed) % 60));
 
         //  print(gameTime);
 
