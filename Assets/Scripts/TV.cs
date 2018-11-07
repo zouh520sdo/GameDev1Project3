@@ -13,13 +13,14 @@ public class TV : Interactable {
 
     private VideoPlayer _videoPlayer;
     private AudioSource _audioSource;
+    private GameManager1 _gm;
 
     private long _currentFrame;
 
 	// Use this for initialization
 	void Start () {
 
-
+        _gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager1>();
         _videoPlayer = GetComponent<VideoPlayer>();
         if (_videoPlayer == null)
         {
@@ -66,6 +67,9 @@ public class TV : Interactable {
         {
             _currentFrame = _videoPlayer.frame;
             _videoPlayer.Stop();
+            if (_videoPlayer.clip != videoClip) {
+                _gm.goodJobCounter++;
+            }
         }
         else
         {

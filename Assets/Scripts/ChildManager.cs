@@ -25,6 +25,10 @@ public class ChildManager : MonoBehaviour {
 
     public Door bathroomDoor;
 
+    public bool isCrying;
+    public bool isHoldingBeer;
+    public bool isEatingBad;
+
     private bool _needAction;
     private Animator _animator;
     public enum ChildrenAnimation

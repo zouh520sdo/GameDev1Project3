@@ -48,6 +48,8 @@ public class GameManager1 : MonoBehaviour {
     public Transform pukeTransform;
     public GameObject crayonPrefab;
     public TV tv;
+    public Microwave microwave;
+    public GameObject bowl;
 
     public int goodJobCounter;
 
@@ -124,7 +126,8 @@ public class GameManager1 : MonoBehaviour {
         mildb_manager.canMove = true;
         badb_manager.canMove = true;
 
-
+        // For bowl
+        bowl.SetActive(true);
     }
    
     // Puke
@@ -203,5 +206,32 @@ public class GameManager1 : MonoBehaviour {
         child.SwitchToState(ChildManager.ChildrenAnimation.Cry);
         // Play sad TV
         tv.PlayTV(tv.videoClip);
+    }
+
+    public void eat(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        bowl.SetActive(false);
+        child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
+    }
+
+    public void hideBear(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+        microwave.hideBear();
+    }
+
+    public void hideCube(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+        microwave.hideCube();
     }
 }
