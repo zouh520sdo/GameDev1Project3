@@ -19,4 +19,9 @@ public class Beer : Interactable {
         base.Interact();
         gameObject.SetActive(false);
     }
+
+    public override string getAction()
+    {
+      return "Drink beer";
+    }
 }
