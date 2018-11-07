@@ -128,6 +128,8 @@ public class GameManager1 : MonoBehaviour {
 
         // For bowl
         bowl.SetActive(true);
+        // For TV
+        tv.StopTV();
     }
    
     // Puke
@@ -162,6 +164,7 @@ public class GameManager1 : MonoBehaviour {
         if (child.beer)
         {
             child.beer.SetActive(true);
+            child.isHoldingBeer = true;
         }
         child.transform.position = sitTransform.position;
         child.transform.rotation = sitTransform.rotation;
@@ -183,7 +186,7 @@ public class GameManager1 : MonoBehaviour {
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
 
         // Play good TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.goodClip);
     }
 
     public void badTV(ChildManager child, Transform sitTransform)
@@ -195,7 +198,7 @@ public class GameManager1 : MonoBehaviour {
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
 
         // Play bad TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.badClip);
     }
 
     public void sadTV(ChildManager child, Transform sitTransform)
@@ -204,8 +207,9 @@ public class GameManager1 : MonoBehaviour {
         child.transform.rotation = sitTransform.rotation;
 
         child.SwitchToState(ChildManager.ChildrenAnimation.Cry);
+        child.isCrying = true;
         // Play sad TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.sadClip);
     }
 
     public void eat(ChildManager child, Transform sitTransform)
@@ -214,6 +218,7 @@ public class GameManager1 : MonoBehaviour {
         child.transform.rotation = sitTransform.rotation;
 
         bowl.SetActive(false);
+        child.isEatingBad = true;
         child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
     }
 

@@ -53,10 +53,13 @@ public class ChildManager : MonoBehaviour {
     {
         bowl.SetActive(false);
         spoon.SetActive(false);
+        isCrying = false;
         if (beer)
         {
             beer.SetActive(false);
+            isHoldingBeer = false;
         }
+        isEatingBad = false;
     }
 
     // Update is called once per frame

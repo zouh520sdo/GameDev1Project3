@@ -37,4 +37,22 @@ public class Kid : Interactable {
             _cm.beer.SetActive(false);
         }
     }
+
+    public override string getAction()
+    {
+        if (_cm.isCrying)
+        {
+            return "Comfort";
+        }
+        if (_cm.isEatingBad)
+        {
+            return "Stop";
+        }
+        if (_cm.isHoldingBeer)
+        {
+            return "Take Beer Away";
+        }
+
+        return "";
+    }
 }
