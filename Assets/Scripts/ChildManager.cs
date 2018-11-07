@@ -22,6 +22,7 @@ public class ChildManager : MonoBehaviour {
     public GameObject bowl;
     public GameObject spoon;
 
+    private bool _needAction;
     private Animator _animator;
     public enum ChildrenAnimation
     {
@@ -39,6 +40,7 @@ public class ChildManager : MonoBehaviour {
         bowl.SetActive(false);
         spoon.SetActive(false);
         _animator = GetComponent<Animator>();
+        _needAction = false;
     }
 	
 	// Update is called once per frame
@@ -87,6 +89,17 @@ public class ChildManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.N))
         {
             SwitchToState(ChildrenAnimation.Walk);
+        }
+
+        if (!agent.hasPath && _needAction && roomControl)
+        {
+            _needAction = false;
+            roomControl.takeAction(this);
+        }
+
+        if (agent.hasPath)
+        {
+            _needAction = true;
         }
     }
 

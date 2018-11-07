@@ -7,6 +7,7 @@ public class RoomControl : MonoBehaviour {
     public bool occupied;
 
     public Room roomType;
+    public GameManager1 gamemanager;
     
     // Use this for initialization
 	void Start () {
@@ -19,16 +20,28 @@ public class RoomControl : MonoBehaviour {
         {
 
         }
+        else if (roomType == Room.girlroom)
+        {
+
+        }
+        else if (roomType == Room.kitchen)
+        {
+
+        }
+        else if (roomType == Room.livingroom)
+        {
+
+        }
+        else if (roomType == Room.momroom)
+        {
+
+        }
         ///
-
-
-
-
 	}
 
-    public void takeAction()
+    public void takeAction(ChildManager child)
     {
-
+        
     }
 	
 	// Update is called once per frame
