@@ -42,7 +42,7 @@ public class Table : Interactable {
 
   public override string getAction()
   {
-    if (bowl.activeSelf)
+    if (!bowl.activeSelf)
     {
       if (_player.hasCookedFood)
       {
@@ -50,7 +50,7 @@ public class Table : Interactable {
       }
       else
       {
-        return "If you have food, place it here";
+        return "If you have cooked food, place it here";
       }
     }
     return "";

@@ -93,7 +93,7 @@ public class GameManager1 : MonoBehaviour {
 
         //  print(gameTime);
 
-        if (Time.time > gameTime)
+        if (timeElapsed > gameTime)
         {
           endGame();
           Debug.Log("game end");
