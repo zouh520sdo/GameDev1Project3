@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,7 +50,7 @@ public class RoomControl : MonoBehaviour {
             string action = actions[Random.Range(0, actions.Count)];
             print(name + " pick action " + action);
         }
-        catch (Exception)
+        catch (System.Exception)
         {
 
         }
