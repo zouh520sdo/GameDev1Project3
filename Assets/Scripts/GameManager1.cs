@@ -53,6 +53,7 @@ public class GameManager1 : MonoBehaviour {
     public TV tv;
     public Microwave microwave;
     public GameObject bowl;
+    public Toilet toilet;
 
     public int goodJobCounter;
 
@@ -82,6 +83,19 @@ public class GameManager1 : MonoBehaviour {
 
         //  print(gameTime);
 
+    }
+
+    public IEnumerator ChooseNextRoom (ChildManager child, Transform next)
+    {
+        float timestamp = Time.time;
+        child.SwitchToState(ChildManager.ChildrenAnimation.Idle);
+
+        while (Time.time - timestamp < 3)
+        {
+            yield return null;
+        }
+
+        child.nextRoom = next;
     }
 
     public void DetermineChoices()
@@ -143,7 +157,7 @@ public class GameManager1 : MonoBehaviour {
     // Puke
     public void pukeInToilet()
     {
-        Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
+        toilet.producePoop();
     }
 
     // Flush
@@ -156,7 +170,6 @@ public class GameManager1 : MonoBehaviour {
     public void flushAndPuke()
     {
         // Playing flushing sound
-        Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
     }
 
     public void sit(ChildManager child, Transform sitTransform)
