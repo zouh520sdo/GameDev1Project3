@@ -154,7 +154,7 @@ public class GameManager1 : MonoBehaviour {
 
 
         // For bowl
-        bowl.SetActive(true);
+        //bowl.SetActive(true);
         // For TV
         tv.StopTV();
     }
@@ -244,30 +244,32 @@ public class GameManager1 : MonoBehaviour {
 
     public void eat(ChildManager child, Transform sitTransform)
     {
-        child.transform.position = sitTransform.position;
-        child.transform.rotation = sitTransform.rotation;
+    if (bowl.activeSelf)
+    {
+      child.transform.position = sitTransform.position;
+      child.transform.rotation = sitTransform.rotation;
 
-        bowl.SetActive(false);
-        child.isEatingBad = true;
-        child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
+      bowl.SetActive(false);
+      goodJobCounter++;
+      GlobalManager.instance.jobs.Add("Fed the child");
+      //child.isEatingBad = true;
+      child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
+    }
+    else sit(child, sitTransform);
     }
 
     public void hideBear(ChildManager child, Transform sitTransform)
     {
-        child.transform.position = sitTransform.position;
-        child.transform.rotation = sitTransform.rotation;
+        if(microwave.isAvailable()) microwave.hideBear();
 
-        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
-        microwave.hideBear();
+        eat(child, sitTransform);
     }
 
     public void hideCube(ChildManager child, Transform sitTransform)
     {
-        child.transform.position = sitTransform.position;
-        child.transform.rotation = sitTransform.rotation;
+      if (microwave.isAvailable()) microwave.hideCube();
 
-        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
-        microwave.hideCube();
+      eat(child, sitTransform);
     }
     
   public void endGame()
