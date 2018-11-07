@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+[RequireComponent(typeof(ChildManager))]
 public class GameManager1 : MonoBehaviour {
 
  
     //for setting destinations/checking previous rooms 
     public ChildManager girl_manager;
     public ChildManager badb_manager;
-    public ChildManager oddb_manager;
+    public ChildManager mildb_manager;
 
     //for moving the children according to NavMesh 
-    public NavMeshAgent girl_agent;
-    public NavMeshAgent badBoy_agent;
-    public NavMeshAgent mildBoy_agent;
+    //public UnityEngine.AI.NavMeshAgent girl_agent;
+    //public UnityEngine.AI.NavMeshAgent badBoy_agent;
+    //public UnityEngine.AI.NavMeshAgent mildBoy_agent;
 
     /* rooms that each child can go to. In determine choices function, these arrays are copied into a list.
      we check the room that the child was already in (aka the current room they are in) and give it a random other
@@ -35,24 +37,38 @@ public class GameManager1 : MonoBehaviour {
 
     // public Transform[] spawnPoints; //array of places children can move to 
 
-    public GameObject[] kids; 
-    public ChildManager[] kidAgents; //for navMesh navigation 
+    public GameObject[] kids;
+    
+    public NavMeshAgent girlAgent; //for navMesh navigation
+    public NavMeshAgent bad_boyAgent;
+    public NavMeshAgent mild_boyAgent;
+
+    // Prefabs for events
+    public GameObject pukeObject;
+    public Transform pukeTransform;
+
+    public int goodJobCounter;
+
     bool start_game; 
     
 	// Use this for initialization
 	void Start () {
 
-
+        goodJobCounter = 0;
 
         InvokeRepeating("DetermineChoices", 3.0f, 22.0f); //start the game in 3 seconds, call this function every 22 seconds 
-
+        
+        girlAgent.GetComponent<NavMeshAgent>();
+        bad_boyAgent.GetComponent<NavMeshAgent>();
+        mild_boyAgent.GetComponent<NavMeshAgent>();
+       
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
         gameTime -= Time.deltaTime;
-        //print(gameTime);
+      //  print(gameTime);
 
     }
     /*
@@ -103,15 +119,22 @@ public class GameManager1 : MonoBehaviour {
 
         //for the mild boy --------------------------------------
         List<Transform> temp_mildB_choices = new List<Transform>(mild_boyChoices);
-        if (temp_mildB_choices.Contains(oddb_manager.prevRoom))
+        if (temp_mildB_choices.Contains(mildb_manager.prevRoom))
         {
-            temp_mildB_choices.Remove(oddb_manager.prevRoom);
+            temp_mildB_choices.Remove(mildb_manager.prevRoom);
         }
         temp_mildB_choices.Remove(girl_next); //remove the girls next room 
         temp_mildB_choices.Remove(badB_next); //remove the bad boys next room 
         int mildB_index = Random.Range(0, temp_mildB_choices.Count);
         Transform mildB_next = temp_mildB_choices[mildB_index];
-        oddb_manager.nextRoom = mildB_next;
+        mildb_manager.nextRoom = mildB_next;
+
+        //allow the navMeshes of the kids to move to their destionations 
+        girl_manager.canMove = true;
+        mildb_manager.canMove = true;
+        badb_manager.canMove = true;
+        
+        
 
 
     }
@@ -119,7 +142,16 @@ public class GameManager1 : MonoBehaviour {
     public void MoveChildren()
     {
       
+
+
+
+
     }
 
+
+    public void pukeInToilet()
+    {
+        Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
+    }
 
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,16 +8,21 @@ public class ChildManager : MonoBehaviour {
 
     public Transform child_name;
     public GameManager1 game_manager;
-    public Vector3 spawnPoint; //destination for child to move to 
     public Transform prevRoom; //room that child was currently in 
     public Transform nextRoom; //next room for child to go to 
     public Transform[] available_rooms; //array of rooms available for child to go to 
-    public NavMeshAgent agent;
+    public UnityEngine.AI.NavMeshAgent agent;
+    public bool canMove;
+    //public Door[] Doors;
+    //public Door currentDoor;
 
+    public RoomControl roomControl;
+    
 
     public GameObject bowl;
     public GameObject spoon;
 
+    private bool _needAction;
     private Animator _animator;
     public enum ChildrenAnimation
     {
@@ -34,10 +40,17 @@ public class ChildManager : MonoBehaviour {
         bowl.SetActive(false);
         spoon.SetActive(false);
         _animator = GetComponent<Animator>();
+        _needAction = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (canMove)
+        {
+            agent.destination = nextRoom.position;
+        }
+		
 		if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "eat")
         {
             bowl.SetActive(true);
@@ -77,9 +90,28 @@ public class ChildManager : MonoBehaviour {
         {
             SwitchToState(ChildrenAnimation.Walk);
         }
+
+        if (!agent.hasPath && _needAction && roomControl)
+        {
+            _needAction = false;
+            roomControl.takeAction(this);
+        }
+
+        if (agent.hasPath)
+        {
+            _needAction = true;
+        }
     }
 
-     void OnTriggerStay(Collider other) //to keep track of where the child already was 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Room")
+        {
+            roomControl = other.GetComponent<RoomControl>();
+        }
+    }
+
+    void OnTriggerStay(Collider other) //to keep track of where the child already was 
     {
         if(other.gameObject.name == "LivingRoomTrigger")
         {
@@ -107,7 +139,6 @@ public class ChildManager : MonoBehaviour {
         }
 
     }
-
 
     public void SwitchToState(ChildrenAnimation anim)
     {
