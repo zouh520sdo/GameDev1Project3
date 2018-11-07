@@ -18,6 +18,7 @@ public class EndTextMessages : MonoBehaviour
   // Use this for initialization
   void Start()
   {
+    Cursor.visible = true;
 
     StartCoroutine(ShowTextMessage());
     continueButton.onClick.AddListener(SwitchScene);
@@ -32,9 +33,9 @@ public class EndTextMessages : MonoBehaviour
 
   IEnumerator ShowTextMessage()
   {
-    yield return new WaitForSeconds(3f);
+    yield return new WaitForSeconds(6f);
     setMomText();
-    yield return new WaitForSeconds(3f);
+    yield return new WaitForSeconds(6f);
     button.SetActive(true);
 
 
@@ -46,6 +47,7 @@ public class EndTextMessages : MonoBehaviour
   {
     if (GlobalManager.instance != null)
     {
+      Debug.Log(GlobalManager.instance.goodJobCounter);
 
       if (GlobalManager.instance.goodJobCounter <= 0)
       {

@@ -56,6 +56,10 @@ public class Toilet : Interactable {
 
     public override string getAction()
     {
-        return "Flush";
+    if (poop.activeInHierarchy)
+    {
+      return "flush";
     }
+    return "";
+  }
 }

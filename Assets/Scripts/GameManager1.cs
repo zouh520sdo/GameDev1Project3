@@ -75,8 +75,8 @@ public class GameManager1 : MonoBehaviour {
       if (GlobalManager.instance == null)
       {
         Instantiate(globalManager);
-
       }
+      globalManager.reset();
 	}
 	
 	// Update is called once per frame
@@ -273,7 +273,7 @@ public class GameManager1 : MonoBehaviour {
   public void endGame()
   {
 
-    GlobalManager.instance.goodJobCounter = 5 + goodJobCounter;
+    GlobalManager.instance.goodJobCounter = goodJobCounter;
     SceneManager.LoadScene("End");
     Debug.Log("END");
   }
