@@ -22,6 +22,6 @@ public class Beer : Interactable {
 
     public override string getAction()
     {
-      return "Drink beer";
+      return "Take beer";
     }
 }
