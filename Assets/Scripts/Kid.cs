@@ -11,6 +11,8 @@ public class Kid : Interactable {
 	void Start () {
         _cm = GetComponent<ChildManager>();
         _gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager1>();
+
+        GameManager1.kids.Add(this);
 	}
 	
 	// Update is called once per frame
@@ -62,5 +64,17 @@ public class Kid : Interactable {
         }
 
         return "";
+    }
+
+    public bool isWaitingForFood()
+    {
+    return _cm.isWaitingForFood;
+    }
+
+    public void giveFood()
+    {
+      _cm.isWaitingForFood = false;
+      _cm.timeToEat = 2f; //used for animation syncing
+      _gm.eat(_cm, _cm.roomControl.sitTranform);
     }
 }
