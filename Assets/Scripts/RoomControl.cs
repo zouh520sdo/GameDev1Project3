@@ -93,7 +93,7 @@ public class RoomControl : MonoBehaviour {
 
             if (action == Action.puke)
             {
-                gamemanager.pukeInToilet();
+                gamemanager.pukeInToilet(child);
             }
             else if (action == Action.flush)
             {
@@ -101,7 +101,7 @@ public class RoomControl : MonoBehaviour {
             }
             else if (action == Action.puckAndFlush)
             {
-                gamemanager.flushAndPuke();
+                gamemanager.flushAndPuke(child);
             }
             else if (action == Action.sit)
             {

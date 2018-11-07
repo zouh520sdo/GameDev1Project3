@@ -27,6 +27,7 @@ public class Kid : Interactable {
             GlobalManager.instance.jobs.Add("Comforted a crying child");
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
             _cm.isCrying = false;
+            _cm.StopSound();
         }
         if (_cm.isEatingBad)
         {
@@ -34,6 +35,7 @@ public class Kid : Interactable {
             GlobalManager.instance.jobs.Add("Took junk food away from a child");
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
             _cm.isEatingBad = false;
+            _cm.StopSound();
         }
         if (_cm.isHoldingBeer)
         {

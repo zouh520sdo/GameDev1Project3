@@ -47,6 +47,7 @@ public class Toilet : Interactable {
     public override void Interact()
     {
         base.Interact();
+        flush();
         if (poop.activeInHierarchy)
         {
             poop.SetActive(false);
