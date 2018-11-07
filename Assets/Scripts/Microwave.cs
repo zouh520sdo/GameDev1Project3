@@ -67,54 +67,46 @@ public class Microwave : Interactable {
       o.SetActive(false);
     }
 
-    public override void Interact()
+  IEnumerator addToMicrowave(GameObject o)
+  {
+    yield return new WaitForSeconds(1f);
+    o.SetActive(true);
+  }
+
+  public override void Interact()
     {
         base.Interact();
 
-        microwaveAnimator.SetTrigger("Open");
-
-        if (bear.activeInHierarchy)
-        {
-            takeBear();
-        }
-        if (cube.activeInHierarchy)
-        {
-            takeCube();
-        }
-
-        /*
         if (!isCooking)
         {
             microwaveAnimator.SetTrigger("Open");
 
             if (cube.activeInHierarchy)
             {
-                cube.SetActive(false);
-                _player.hasCube = true;
+                takeCube();
             }
 
             if (bowl.activeInHierarchy)
             {
-                bowl.SetActive(false);
+                StartCoroutine(removeFromMicrowave(bowl));
                 _player.hasCookedFood = true;
             }
 
             if (bear.activeInHierarchy)
             {
-                bear.SetActive(false);
-                _player.hasBear = true;
-            }
+                 takeBear();
+            }  
 
             if (!bowl.activeInHierarchy && !cube.activeInHierarchy && !bear.activeInHierarchy)
             {
                 if (_player.hasBowl)
                 {
                     _player.hasBowl = false;
-                    bowl.SetActive(true);
+                    StartCoroutine(addToMicrowave(bowl));
                     StartCoroutine(cookingCountDown(cookingTime));
                 }
             }
-        }*/
+        }
     }
 
     IEnumerator cookingCountDown(float duration)
