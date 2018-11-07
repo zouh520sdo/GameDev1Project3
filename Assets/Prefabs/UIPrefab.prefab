@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 222218996044694684}
   - component: {fileID: 114152668476175050}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TimeNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 222230790861653116}
   - component: {fileID: 114569623697097598}
   m_Layer: 5
-  m_Name: Image
+  m_Name: TimerBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
