@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,13 +9,17 @@ public class RoomControl : MonoBehaviour {
 
     public Room roomType;
     public GameManager1 gamemanager;
+
+    public List<string> actions;
     
     // Use this for initialization
 	void Start () {
+
+        actions = new List<string>();
 		
         if (roomType == Room.bathroom)
         {
-
+            actions.Add("puke");
         }
         else if (roomType == Room.boysroom)
         {
@@ -41,7 +46,15 @@ public class RoomControl : MonoBehaviour {
 
     public void takeAction(ChildManager child)
     {
-        
+        try
+        {
+            string action = actions[Random.Range(0, actions.Count)];
+            print(name + " pick action " + action);
+        }
+        catch (Exception)
+        {
+
+        }
     }
 	
 	// Update is called once per frame

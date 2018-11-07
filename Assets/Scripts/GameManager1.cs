@@ -42,7 +42,11 @@ public class GameManager1 : MonoBehaviour {
     public NavMeshAgent girlAgent; //for navMesh navigation
     public NavMeshAgent bad_boyAgent;
     public NavMeshAgent mild_boyAgent;
-    
+
+    // Prefabs for events
+    public GameObject pukeObject;
+    public Transform pukeTransform;
+
     bool start_game; 
     
 	// Use this for initialization
@@ -142,5 +146,10 @@ public class GameManager1 : MonoBehaviour {
 
     }
 
+
+    public void pukeInToilet()
+    {
+        Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
+    }
 
 }

@@ -13,7 +13,7 @@ public class ChildManager : MonoBehaviour {
     public Transform[] available_rooms; //array of rooms available for child to go to 
     public UnityEngine.AI.NavMeshAgent agent;
     public bool canMove;
-    public Door[] Doors;
+    //public Door[] Doors;
     //public Door currentDoor;
 
     public RoomControl roomControl;
