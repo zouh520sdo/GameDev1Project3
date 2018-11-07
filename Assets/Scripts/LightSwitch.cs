@@ -22,7 +22,16 @@ public class LightSwitch : Interactable {
     {
         base.Interact();
         pointLight.enabled = !pointLight.enabled;
-    }
+
+      if (pointLight.enabled)
+      {
+        LightSwitch.numLightsOff--;
+      }
+      else
+      {
+        LightSwitch.numLightsOff++;
+      }
+  }
 
   public override string getAction()
   {
