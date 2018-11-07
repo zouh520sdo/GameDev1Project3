@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour {
     //override in child with appropriate action
     public virtual string getAction()
     {
-    return "";
+        return "";
     }
 
 }

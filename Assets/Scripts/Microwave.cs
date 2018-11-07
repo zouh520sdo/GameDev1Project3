@@ -10,9 +10,13 @@ public class Microwave : Interactable {
     public GameObject cube;
     public GameObject bear;
 
+    public GameObject cubeInRoom;
+    public GameObject bearInRoom;
+
     public bool isCooking = false;
     public float cookingTime = 5;
 
+    private GameManager1 _gm;
     private Player _player;
     // Use this for initialization
     void Start () {
@@ -21,6 +25,7 @@ public class Microwave : Interactable {
         bear.SetActive(false);
 
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager1>();
     }
 	
 	// Update is called once per frame
@@ -28,10 +33,48 @@ public class Microwave : Interactable {
 		
 	}
 
+    public void hideBear()
+    {
+        bear.SetActive(true);
+        bearInRoom.SetActive(false);
+    }
+
+    public void hideCube()
+    {
+        cube.SetActive(true);
+        cubeInRoom.SetActive(false);
+    }
+
+    public void takeBear()
+    {
+        bear.SetActive(false);
+        bearInRoom.SetActive(true);
+        _gm.goodJobCounter++;
+    }
+
+    public void takeCube()
+    {
+        cube.SetActive(false);
+        cubeInRoom.SetActive(true);
+        _gm.goodJobCounter++;
+    }
+
     public override void Interact()
     {
         base.Interact();
 
+        microwaveAnimator.SetTrigger("Open");
+
+        if (bear.activeInHierarchy)
+        {
+            takeBear();
+        }
+        if (cube.activeInHierarchy)
+        {
+            takeCube();
+        }
+
+        /*
         if (!isCooking)
         {
             microwaveAnimator.SetTrigger("Open");
@@ -63,7 +106,7 @@ public class Microwave : Interactable {
                     StartCoroutine(cookingCountDown(cookingTime));
                 }
             }
-        }
+        }*/
     }
 
     IEnumerator cookingCountDown(float duration)
@@ -102,6 +145,6 @@ public class Microwave : Interactable {
         }
       }
     }
-    return "";
+    return "Check";
   }
 }

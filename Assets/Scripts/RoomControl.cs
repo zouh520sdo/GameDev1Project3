@@ -27,7 +27,13 @@ public class RoomControl : MonoBehaviour {
         // Living room
         goodTV,
         badTV,
-        sadTV
+        sadTV,
+
+        // Kitchen
+        hideBear,
+        hideCube,
+        eat,
+        openFridge
     }
 
     public List<Action> actions;
@@ -57,7 +63,10 @@ public class RoomControl : MonoBehaviour {
         }
         else if (roomType == Room.kitchen)
         {
-
+            actions.Add(Action.sit);
+            actions.Add(Action.hideCube);
+            actions.Add(Action.hideBear);
+            actions.Add(Action.eat);
         }
         else if (roomType == Room.livingroom)
         {
@@ -80,7 +89,7 @@ public class RoomControl : MonoBehaviour {
         try
         {
             Action action = actions[Random.Range(0, actions.Count)];
-            print(name + " pick action " + action);
+            print(child.name + " pick action " + action + " to " + child.nextRoom);
 
             if (action == Action.puke)
             {
@@ -125,6 +134,18 @@ public class RoomControl : MonoBehaviour {
             else if (action == Action.sadTV)
             {
                 gamemanager.sadTV(child, sitTranform);
+            }
+            else if (action == Action.eat)
+            {
+                gamemanager.eat(child, sitTranform);
+            }
+            else if (action == Action.hideBear)
+            {
+                gamemanager.hideBear(child, sitTranform);
+            }
+            else if (action == Action.hideCube)
+            {
+                gamemanager.hideCube(child, sitTranform);
             }
         }
         catch (System.Exception)

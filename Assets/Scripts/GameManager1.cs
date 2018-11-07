@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(ChildManager))]
@@ -33,7 +34,9 @@ public class GameManager1 : MonoBehaviour {
     public Transform kitchen;
     public Transform bathroom;
 
+    public Text time;
     public float gameTime = 360; //game is 6 minutes long, so 360 seconds 
+    private float timeElapsed = 0;
 
     // public Transform[] spawnPoints; //array of places children can move to 
 
@@ -48,6 +51,9 @@ public class GameManager1 : MonoBehaviour {
     public Transform pukeTransform;
     public GameObject crayonPrefab;
     public TV tv;
+    public Microwave microwave;
+    public GameObject bowl;
+    public Toilet toilet;
 
     public int goodJobCounter;
 
@@ -69,9 +75,27 @@ public class GameManager1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        gameTime -= Time.deltaTime;
-      //  print(gameTime);
+        timeElapsed = gameTime - Time.time;
+        if ((360 -timeElapsed)%60 >= 10)
+            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":" + ((int)(360 - timeElapsed) % 60);
+        else
+            time.text = "" + ((int)(3 + (360 - timeElapsed) / 60)) + ":0" + ((int)(360 - timeElapsed) % 60);
 
+        //  print(gameTime);
+
+    }
+
+    public IEnumerator ChooseNextRoom (ChildManager child, Transform next)
+    {
+        float timestamp = Time.time;
+        child.SwitchToState(ChildManager.ChildrenAnimation.Idle);
+
+        while (Time.time - timestamp < 3)
+        {
+            yield return null;
+        }
+
+        child.nextRoom = next;
     }
 
     public void DetermineChoices()
@@ -124,13 +148,16 @@ public class GameManager1 : MonoBehaviour {
         mildb_manager.canMove = true;
         badb_manager.canMove = true;
 
-
+        // For bowl
+        bowl.SetActive(true);
+        // For TV
+        tv.StopTV();
     }
    
     // Puke
     public void pukeInToilet()
     {
-        Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
+        toilet.producePoop();
     }
 
     // Flush
@@ -143,7 +170,6 @@ public class GameManager1 : MonoBehaviour {
     public void flushAndPuke()
     {
         // Playing flushing sound
-        Instantiate(pukeObject, pukeTransform.position, Quaternion.identity);
     }
 
     public void sit(ChildManager child, Transform sitTransform)
@@ -159,6 +185,7 @@ public class GameManager1 : MonoBehaviour {
         if (child.beer)
         {
             child.beer.SetActive(true);
+            child.isHoldingBeer = true;
         }
         child.transform.position = sitTransform.position;
         child.transform.rotation = sitTransform.rotation;
@@ -180,7 +207,7 @@ public class GameManager1 : MonoBehaviour {
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
 
         // Play good TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.goodClip);
     }
 
     public void badTV(ChildManager child, Transform sitTransform)
@@ -192,7 +219,7 @@ public class GameManager1 : MonoBehaviour {
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
 
         // Play bad TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.badClip);
     }
 
     public void sadTV(ChildManager child, Transform sitTransform)
@@ -201,7 +228,36 @@ public class GameManager1 : MonoBehaviour {
         child.transform.rotation = sitTransform.rotation;
 
         child.SwitchToState(ChildManager.ChildrenAnimation.Cry);
+        child.isCrying = true;
         // Play sad TV
-        tv.PlayTV(tv.videoClip);
+        tv.PlayTV(tv.sadClip);
+    }
+
+    public void eat(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        bowl.SetActive(false);
+        child.isEatingBad = true;
+        child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
+    }
+
+    public void hideBear(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+        microwave.hideBear();
+    }
+
+    public void hideCube(ChildManager child, Transform sitTransform)
+    {
+        child.transform.position = sitTransform.position;
+        child.transform.rotation = sitTransform.rotation;
+
+        child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
+        microwave.hideCube();
     }
 }
