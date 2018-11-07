@@ -5,21 +5,20 @@ using UnityEngine.Video;
 
 public class TV : Interactable {
 
-    public VideoClip videoClip;
-    public VideoClip normal_tv_good;
-    public VideoClip my_little_pony_good;
-    public VideoClip back_dat_bad;
-    public VideoClip weed_bad;
+    public VideoClip goodClip;
+    public VideoClip badClip;
+    public VideoClip sadClip;
 
     private VideoPlayer _videoPlayer;
     private AudioSource _audioSource;
+    private GameManager1 _gm;
 
     private long _currentFrame;
 
 	// Use this for initialization
 	void Start () {
 
-
+        _gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager1>();
         _videoPlayer = GetComponent<VideoPlayer>();
         if (_videoPlayer == null)
         {
@@ -33,7 +32,7 @@ public class TV : Interactable {
         }
 
         _videoPlayer.playOnAwake = false;
-        _videoPlayer.clip = videoClip;
+        _videoPlayer.clip = goodClip;
         _videoPlayer.isLooping = true;
         _videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
         _videoPlayer.targetMaterialRenderer = GetComponent<Renderer>();
@@ -58,6 +57,14 @@ public class TV : Interactable {
         _videoPlayer.Play();
     }
 
+    public void StopTV()
+    {
+        if (_videoPlayer.isPlaying)
+        {
+            _videoPlayer.Stop();
+        }
+    }
+
     public override void Interact()
     {
         base.Interact();
@@ -66,23 +73,19 @@ public class TV : Interactable {
         {
             _currentFrame = _videoPlayer.frame;
             _videoPlayer.Stop();
-        }
-        else
-        {
-            _videoPlayer.frame = _currentFrame;
-            _videoPlayer.Play();
+            if (_videoPlayer.clip == badClip) {
+                _gm.goodJobCounter++;
+            }
         }
     }
 
-  public override string getAction()
-  {
-    if (_videoPlayer.isPlaying)
+    public override string getAction()
     {
-      return "Turn off TV";
+        if (_videoPlayer.isPlaying)
+        {
+            return "Close TV";
+        }
+
+        return "";
     }
-    else
-    {
-      return "Turn on TV";
-    }
-  }
 }
