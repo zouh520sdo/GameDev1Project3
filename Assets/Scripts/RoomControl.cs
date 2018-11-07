@@ -138,12 +138,16 @@ public class RoomControl : MonoBehaviour {
             else if (action == Action.eat)
             {
 
-        Debug.Log("bowl is "+gamemanager.bowl.activeSelf);
-              if (gamemanager.bowl.activeSelf)
-              {
-                 gamemanager.eat(child, sitTranform);
-              }
-              else gamemanager.sit(child, sitTranform);
+                Debug.Log("bowl is "+gamemanager.bowl.activeSelf);
+                if (gamemanager.bowl.activeSelf)
+                {
+                  gamemanager.eat(child, sitTranform);
+                }
+                else
+                {
+                  child.isWaitingForFood = true;
+                  gamemanager.sit(child, sitTranform);
+                }
             }
             else if (action == Action.hideBear)
             {

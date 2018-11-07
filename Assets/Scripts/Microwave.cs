@@ -63,7 +63,7 @@ public class Microwave : Interactable {
 
     IEnumerator removeFromMicrowave(GameObject o)
     {
-      yield return new WaitForSeconds(0.8f);
+      yield return new WaitForSeconds(1.2f);
       o.SetActive(false);
     }
 
