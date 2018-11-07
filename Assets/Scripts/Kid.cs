@@ -52,7 +52,7 @@ public class Kid : Interactable {
         }
         if (_cm.isEatingBad)
         {
-            return "Stop";
+            return "Take away junk food";
         }
         if (_cm.isHoldingBeer)
         {
