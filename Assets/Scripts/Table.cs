@@ -42,10 +42,17 @@ public class Table : Interactable {
 
   public override string getAction()
   {
-    if (_player.hasCookedFood)
+    if (bowl.activeSelf)
     {
-      return "Place food";
+      if (_player.hasCookedFood)
+      {
+        return "Place food";
+      }
+      else
+      {
+        return "If you have food, place it here";
+      }
     }
-    else return "";
+    return "";
   }
 }
