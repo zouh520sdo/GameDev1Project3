@@ -160,8 +160,9 @@ public class GameManager1 : MonoBehaviour {
     }
    
     // Puke
-    public void pukeInToilet()
+    public void pukeInToilet(ChildManager child)
     {
+        child.PlayPukeSound();
         toilet.producePoop();
     }
 
@@ -173,10 +174,10 @@ public class GameManager1 : MonoBehaviour {
     }
 
     // Flush and puke
-    public void flushAndPuke()
+    public void flushAndPuke(ChildManager child)
     {
         // Playing puke sound
-
+        child.PlayPukeSound();
         // Playing flushing sound
         toilet.flush();
     }
@@ -215,6 +216,8 @@ public class GameManager1 : MonoBehaviour {
 
         child.SwitchToState(ChildManager.ChildrenAnimation.SitOnSofa);
 
+        child.PlayLaughing();
+
         // Play good TV
         tv.PlayTV(tv.goodClip);
     }
@@ -237,6 +240,7 @@ public class GameManager1 : MonoBehaviour {
         child.transform.rotation = sitTransform.rotation;
 
         child.SwitchToState(ChildManager.ChildrenAnimation.Cry);
+        child.PlayCrying();
         child.isCrying = true;
         // Play sad TV
         tv.PlayTV(tv.sadClip);

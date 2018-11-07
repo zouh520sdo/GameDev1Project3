@@ -42,12 +42,21 @@ public class ChildManager : MonoBehaviour {
         SitOnSofa
     }
 
+    public AudioClip crying_snd;
+    public AudioClip eating_snd;
+    public AudioClip laughing_snd;
+    public AudioClip puking_snd;
+    public AudioClip pooping_snd;
+    public AudioClip slurping_snd;
+    private AudioSource _as;
+
 	// Use this for initialization
 	void Start () {
         // For animations
-        ResetChild();
         _animator = GetComponent<Animator>();
         _needAction = false;
+        _as = GetComponent<AudioSource>();
+        ResetChild();
     }
 
     public void ResetChild()
@@ -63,6 +72,8 @@ public class ChildManager : MonoBehaviour {
         isEatingBad = false;
         isWaitingForFood = false;
         timeToEat = 1f; //used for animation syncing
+        _as.Stop();
+        _as.clip = null;
     }
 
     // Update is called once per frame
@@ -127,6 +138,40 @@ public class ChildManager : MonoBehaviour {
         {
             _needAction = true;
         }
+    }
+
+    public void PlayPukeSound()
+    {
+        _as.loop = false;
+        _as.clip = puking_snd;
+        _as.Play();
+    }
+
+    public void PlayCrying()
+    {
+        _as.loop = true;
+        _as.clip = crying_snd;
+        _as.Play();
+    }
+
+    public void PlayEating()
+    {
+        _as.loop = true;
+        _as.clip = eating_snd;
+        _as.Play();
+    }
+
+    public void PlayLaughing()
+    {
+        _as.loop = true;
+        _as.clip = laughing_snd;
+        _as.Play();
+    }
+
+    public void StopSound()
+    {
+        _as.Stop();
+        _as.clip = null;
     }
 
     void OnTriggerEnter(Collider other)
