@@ -23,4 +23,20 @@ public class Fridge : Interactable {
         fridgeAnimator.SetTrigger("Open");
         _player.hasBowl = true;
     }
+
+  public override string getAction()
+  {
+    if (!_player.hasBowl)
+    {
+      return "Get bowl from fridge";
+    }
+    else
+    {
+      if (false && fridgeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !fridgeAnimator.IsInTransition(0))
+      {
+        return "Open fridge";
+      }
+    }
+    return "";
+  }
 }

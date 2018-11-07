@@ -21,4 +21,13 @@ public class LightSwitch : Interactable {
         base.Interact();
         pointLight.enabled = !pointLight.enabled;
     }
+
+  public override string getAction()
+  {
+    if (pointLight.enabled)
+    {
+      return "Turn off light";
+    }
+    else return "Turn on light";
+  }
 }

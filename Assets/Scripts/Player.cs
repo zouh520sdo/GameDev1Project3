@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
     public Image centerIcon;
     public Sprite circleSprite;
     public Sprite handSprite;
+    public Text actionDescription;
 
     // Cleaning UI
     public float hideInactiveAfter;
@@ -146,6 +147,7 @@ public class Player : MonoBehaviour {
                 if (interactableObj != null)
                 {
                     centerIcon.sprite = handSprite;
+                    actionDescription.text = interactableObj.getAction();
 
                     // Active interaction
                     if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire1"))
@@ -167,6 +169,8 @@ public class Player : MonoBehaviour {
         {
             centerIcon.sprite = circleSprite;
         }
+
+        if (centerIcon.sprite == circleSprite) { actionDescription.text = ""; }
 
         // Update cleanable slider
         if (cleanable)

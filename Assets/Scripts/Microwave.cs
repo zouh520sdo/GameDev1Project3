@@ -121,4 +121,30 @@ public class Microwave : Interactable {
 
         isCooking = false;
     }
+
+  public override string getAction()
+  {
+    if (!isCooking)
+    {
+      if (_player.hasBowl)
+      {
+        return "Cook bowl";
+      }
+      else
+      {
+        if (bowl.activeInHierarchy)
+        {
+          return "Get cooked bowl";
+        }
+        else
+        {
+          if (false && microwaveAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !microwaveAnimator.IsInTransition(0))
+          {
+            return "Open microwave";
+          }
+        }
+      }
+    }
+    return "";
+  }
 }

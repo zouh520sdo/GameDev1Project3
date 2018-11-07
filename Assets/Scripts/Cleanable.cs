@@ -61,4 +61,13 @@ public class Cleanable : Interactable {
         Destroy(cleanParticle.gameObject, 0.5f);
         Destroy(gameObject);
     }
+
+  public override string getAction()
+  {
+    if (_player.cleanable != this)
+    {
+      return "Clean";
+    }
+    else return "";
+  }
 }
