@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -202,7 +202,7 @@ RectTransform:
   - {fileID: 648329822}
   - {fileID: 2044462276}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -334,50 +334,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1711130615}
   m_Script: {fileID: 11500000, guid: aa1001742664e384aa3bf9394ec8f29e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  girl_manager: {fileID: 1083268292}
-  badb_manager: {fileID: 1001248762}
-  mildb_manager: {fileID: 1603422344}
-  girlChoices:
-  - {fileID: 1817620830}
-  - {fileID: 224198181}
-  - {fileID: 224198181}
-  - {fileID: 1082318677}
-  - {fileID: 1821236771}
-  - {fileID: 302973281}
-  bad_boyChoices:
-  - {fileID: 1817620830}
-  - {fileID: 224198181}
-  - {fileID: 1082318677}
-  - {fileID: 1821236771}
-  - {fileID: 867012310}
-  - {fileID: 302973281}
-  mild_boyChoices:
-  - {fileID: 1817620830}
-  - {fileID: 224198181}
-  - {fileID: 1082318677}
-  - {fileID: 1821236771}
-  - {fileID: 867012310}
-  - {fileID: 302973281}
-  livingroom: {fileID: 1817620830}
-  mom_room: {fileID: 1821236771}
-  girl_room: {fileID: 224198181}
-  boys_room: {fileID: 1082318677}
-  kitchen: {fileID: 867012310}
-  bathroom: {fileID: 302973281}
-  time: {fileID: 294708669}
-  gameTime: 360
-  kids:
-  - {fileID: 1159369748629192, guid: 44515a17a8688b34c942a51148af3a27, type: 2}
-  - {fileID: 1707505877458654, guid: cc9e7381bb404bf40adbb499c7c91702, type: 2}
-  - {fileID: 1472335362297446, guid: 6d88b0ce2177d7a4e8bfb52499b551c9, type: 2}
-  girlAgent: {fileID: 1083268289}
-  bad_boyAgent: {fileID: 1001248763}
-  mild_boyAgent: {fileID: 418680413}
-  pukeObject: {fileID: 1013329644622592, guid: 569ea6f58182b9442979928b5ef54a20, type: 2}
-  pukeTransform: {fileID: 854830337}
-  goodJobCounter: 0
 --- !u!1 &224198180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2697,7 +2653,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1110699116
 Prefab:
@@ -2736,7 +2692,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4990092394635202, guid: 50469ab69e6f5494386bd077cced6985, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1761846657263402, guid: 50469ab69e6f5494386bd077cced6985, type: 2}
       propertyPath: m_TagString
@@ -2908,7 +2864,7 @@ MonoBehaviour:
   roomType: 2
   gamemanager: {fileID: 167461222}
   sitTranform: {fileID: 953059260}
-  crayonTransform: {fileID: 1349727201}
+  crayonTransform: {fileID: 0}
   actions: 
 --- !u!114 &1110699130
 MonoBehaviour:
@@ -4755,7 +4711,7 @@ Prefab:
     - target: {fileID: 224600317407919388, guid: fc6f34a03d31f154fab8d36e768f451d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 224600317407919388, guid: fc6f34a03d31f154fab8d36e768f451d,
         type: 2}
@@ -5019,6 +4975,11 @@ Prefab:
       propertyPath: tv
       value: 
       objectReference: {fileID: 1298742851}
+    - target: {fileID: 114621805528121998, guid: 7a65eed529e22194e9d88eb64a16f9a5,
+        type: 2}
+      propertyPath: time
+      value: 
+      objectReference: {fileID: 294708669}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a65eed529e22194e9d88eb64a16f9a5, type: 2}
   m_IsPrefabAsset: 0
@@ -5226,7 +5187,7 @@ Transform:
   m_Children:
   - {fileID: 128202166}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 1.151, y: 0.12, z: 0}
 --- !u!1 &1821236770
 GameObject:
@@ -5454,7 +5415,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2044462275
 GameObject:
