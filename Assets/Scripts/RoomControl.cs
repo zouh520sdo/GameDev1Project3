@@ -49,6 +49,11 @@ public class RoomControl : MonoBehaviour {
         {
             string action = actions[Random.Range(0, actions.Count)];
             print(name + " pick action " + action);
+
+            if (action == "puke")
+            {
+                gamemanager.pukeInToilet();
+            }
         }
         catch (System.Exception)
         {

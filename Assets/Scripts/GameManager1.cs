@@ -47,12 +47,14 @@ public class GameManager1 : MonoBehaviour {
     public GameObject pukeObject;
     public Transform pukeTransform;
 
+    public int goodJobCounter;
+
     bool start_game; 
     
 	// Use this for initialization
 	void Start () {
 
-
+        goodJobCounter = 0;
 
         InvokeRepeating("DetermineChoices", 3.0f, 22.0f); //start the game in 3 seconds, call this function every 22 seconds 
         

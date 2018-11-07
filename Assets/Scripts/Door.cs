@@ -10,14 +10,16 @@ public class Door : Interactable {
     public ChildManager GirlChildManager;
     public ChildManager BadBoyManager;
     public ChildManager MildBoyManager;
+    public bool canOpen;
 
     public Transform associatedRoom;
 
 
     // Use this for initialization
     void Start () {
-		
-	}
+        canOpen = true;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
