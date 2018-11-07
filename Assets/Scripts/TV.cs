@@ -6,6 +6,10 @@ using UnityEngine.Video;
 public class TV : Interactable {
 
     public VideoClip videoClip;
+    public VideoClip normal_tv_good;
+    public VideoClip my_little_pony_good;
+    public VideoClip back_dat_bad;
+    public VideoClip weed_bad;
 
     private VideoPlayer _videoPlayer;
     private AudioSource _audioSource;
