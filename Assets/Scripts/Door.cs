@@ -68,4 +68,14 @@ public class Door : Interactable {
         yield return new WaitForSeconds(2.0f);
         OpenCloseDoor();
     }
+
+    public override string getAction()
+    {
+
+      if (canOpen)
+      {
+        return "Open door";
+      }
+      else return "";
+    }
 }

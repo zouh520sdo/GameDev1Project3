@@ -73,4 +73,16 @@ public class TV : Interactable {
             _videoPlayer.Play();
         }
     }
+
+  public override string getAction()
+  {
+    if (_videoPlayer.isPlaying)
+    {
+      return "Turn off TV";
+    }
+    else
+    {
+      return "Turn on TV";
+    }
+  }
 }
