@@ -25,16 +25,19 @@ public class Kid : Interactable {
         {
             _gm.goodJobCounter++;
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
+            _cm.isCrying = false;
         }
         if (_cm.isEatingBad)
         {
             _gm.goodJobCounter++;
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
+            _cm.isEatingBad = false;
         }
         if (_cm.isHoldingBeer)
         {
             _gm.goodJobCounter++;
             _cm.beer.SetActive(false);
+            _cm.isHoldingBeer = false;
         }
     }
 
