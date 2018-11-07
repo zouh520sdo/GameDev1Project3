@@ -52,7 +52,7 @@ public class Toilet : Interactable {
         {
             poop.SetActive(false);
             _gm.goodJobCounter++;
-            GlobalManager.instance.jobs.Add("Flushed the toilet");
+            GlobalManager.instance.jobs.Add("Flushed the toilet (+1pts)");
         }
     }
 

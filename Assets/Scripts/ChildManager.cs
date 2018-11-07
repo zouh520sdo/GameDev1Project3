@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class ChildManager : MonoBehaviour {
 
+    public string name = "child";
     public Transform child_name;
     public GameManager1 game_manager;
     public Transform prevRoom; //room that child was currently in 

@@ -6,6 +6,8 @@ public class LightSwitch : Interactable {
 
     public Light pointLight;
 
+    public static int numLightsOff = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -26,8 +28,13 @@ public class LightSwitch : Interactable {
   {
     if (pointLight.enabled)
     {
+      LightSwitch.numLightsOff++;
       return "Turn off light";
     }
-    else return "Turn on light";
+    else
+    {
+      LightSwitch.numLightsOff--;
+      return "Turn on light";
+    }
   }
 }

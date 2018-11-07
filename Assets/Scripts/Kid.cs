@@ -26,7 +26,7 @@ public class Kid : Interactable {
         if (_cm.isCrying)
         {
             _gm.goodJobCounter++;
-            GlobalManager.instance.jobs.Add("Comforted a crying child");
+            GlobalManager.instance.jobs.Add("Comforted the crying "+_cm.name+" (+1pts)");
             _cm.SwitchToState(ChildManager.ChildrenAnimation.Idle);
             _cm.isCrying = false;
             _cm.StopSound();
@@ -42,7 +42,7 @@ public class Kid : Interactable {
         if (_cm.isHoldingBeer)
         {
             _gm.goodJobCounter++;
-            GlobalManager.instance.jobs.Add("Took beer away from a child");
+            GlobalManager.instance.jobs.Add("Took beer away from "+_cm.name+" (+1pts)");
             _cm.beer.SetActive(false);
             _cm.isHoldingBeer = false;
         }

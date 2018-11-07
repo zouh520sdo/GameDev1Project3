@@ -50,7 +50,7 @@ public class Microwave : Interactable {
         StartCoroutine(removeFromMicrowave(bear));
         bearInRoom.SetActive(true);
         _gm.goodJobCounter++;
-        GlobalManager.instance.jobs.Add("Took the bear out of the microwave");
+        GlobalManager.instance.jobs.Add("Took the bear out of the microwave (+1pts)");
     }
 
     public void takeCube()
@@ -58,7 +58,7 @@ public class Microwave : Interactable {
         StartCoroutine(removeFromMicrowave(cube));
         cubeInRoom.SetActive(true);
         _gm.goodJobCounter++;
-        GlobalManager.instance.jobs.Add("Took the cube out of the microwave");
+        GlobalManager.instance.jobs.Add("Took the cube out of the microwave (+1pts)");
     }
 
     IEnumerator removeFromMicrowave(GameObject o)

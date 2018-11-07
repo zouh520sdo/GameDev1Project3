@@ -259,8 +259,8 @@ public class GameManager1 : MonoBehaviour {
 
           StartCoroutine(setOnOff(null,bowl,child.timeToEat));
           Debug.Log("TTL: "+child.timeToEat);
-          goodJobCounter++;
-          GlobalManager.instance.jobs.Add("Fed the child");
+          goodJobCounter+= 3;
+          GlobalManager.instance.jobs.Add("Fed "+child.name+"(+3pts)");
           //child.isEatingBad = true;
           child.SwitchToState(ChildManager.ChildrenAnimation.Eat);
         }
@@ -287,6 +287,11 @@ public class GameManager1 : MonoBehaviour {
     
   public void endGame()
   {
+    if(LightSwitch.numLightsOff >= 9)
+    {
+      goodJobCounter += 5;
+      GlobalManager.instance.jobs.Add("Turned off all the lights when it was time to go to bed (+5pts)");
+    }
 
     GlobalManager.instance.goodJobCounter = goodJobCounter;
     kids.Clear();

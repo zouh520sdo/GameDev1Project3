@@ -92,7 +92,7 @@ public class EndTextMessages : MonoBehaviour
     for (int i = 0; i < GlobalManager.instance.jobs.Count; i++)
     {
       yield return new WaitForSeconds(0.4f);
-      ScoreSummary.text += GlobalManager.instance.jobs[i]+" (+1pts)\n";
+      ScoreSummary.text += GlobalManager.instance.jobs[i]+"\n";
     }
     yield return new WaitForSeconds(0.4f);
     ScoreSummary.text += "\nTOTAL SCORE: "+GlobalManager.instance.goodJobCounter.ToString()+" POINTS"; ;

@@ -74,8 +74,17 @@ public class TV : Interactable {
             _currentFrame = _videoPlayer.frame;
             _videoPlayer.Stop();
             if (_videoPlayer.clip == badClip) {
-              GlobalManager.instance.jobs.Add("Turned off the TV when an upsetting video was playing");
+              GlobalManager.instance.jobs.Add("Turned off the TV when an inappropriate video was playing (+1pts)");
               _gm.goodJobCounter++;
+            }
+            else if (_videoPlayer.clip == sadClip) {
+              GlobalManager.instance.jobs.Add("Turned off the TV when an upsetting video was playing (+1pts)");
+              _gm.goodJobCounter++;
+            }
+            else if (_videoPlayer.clip == goodClip)
+            {
+              GlobalManager.instance.jobs.Add("Turned off the TV when a pleasant video was playing (-1pts)");
+              _gm.goodJobCounter--;
             }
         }
     }
