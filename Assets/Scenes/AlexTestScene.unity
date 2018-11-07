@@ -214,6 +214,11 @@ Prefab:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 114152668476175050, guid: fc6f34a03d31f154fab8d36e768f451d,
+        type: 2}
+      propertyPath: m_Text
+      value: 3:00
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc6f34a03d31f154fab8d36e768f451d, type: 2}
   m_IsPrefabAsset: 0
