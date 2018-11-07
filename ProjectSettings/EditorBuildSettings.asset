@@ -14,8 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Huang.unity
     guid: 378a6cc659bc47548a90b7d447c4cc13
-  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/unneeded.unity
+    guid: 746013f1428b94f488370032de19f2a4
   - enabled: 1
-    path: Assets/Scenes/Test Scene.unity
-    guid: e535b6ca83c5ca34b844a021b4cc3ae8
+    path: Assets/Scenes/End.unity
+    guid: 1df9600c4869e5f4c94cbf1d454f492e
   m_configObjects: {}
