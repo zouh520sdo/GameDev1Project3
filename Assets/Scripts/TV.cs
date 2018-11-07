@@ -52,6 +52,12 @@ public class TV : Interactable {
 
     }
 
+    public void PlayTV(VideoClip tvShow)
+    {
+        _videoPlayer.clip = tvShow;
+        _videoPlayer.Play();
+    }
+
     public override void Interact()
     {
         base.Interact();
@@ -67,4 +73,16 @@ public class TV : Interactable {
             _videoPlayer.Play();
         }
     }
+
+  public override string getAction()
+  {
+    if (_videoPlayer.isPlaying)
+    {
+      return "Turn off TV";
+    }
+    else
+    {
+      return "Turn on TV";
+    }
+  }
 }

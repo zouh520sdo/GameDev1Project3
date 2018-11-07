@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4639616122838120}
-  - component: {fileID: 114623400587461718}
+  - component: {fileID: 114621805528121998}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114623400587461718
+--- !u!114 &114621805528121998
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 1728182024496396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f48b745e1a78865488041d0295363877, type: 3}
+  m_Script: {fileID: 11500000, guid: aa1001742664e384aa3bf9394ec8f29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 180
+  girl_manager: {fileID: 0}
+  badb_manager: {fileID: 0}
+  mildb_manager: {fileID: 0}
+  girlChoices:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bad_boyChoices:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  mild_boyChoices:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  livingroom: {fileID: 0}
+  mom_room: {fileID: 0}
+  girl_room: {fileID: 0}
+  boys_room: {fileID: 0}
+  kitchen: {fileID: 0}
+  bathroom: {fileID: 0}
+  gameTime: 360
+  kids:
+  - {fileID: 1159369748629192, guid: 44515a17a8688b34c942a51148af3a27, type: 2}
+  - {fileID: 1707505877458654, guid: cc9e7381bb404bf40adbb499c7c91702, type: 2}
+  - {fileID: 1472335362297446, guid: 6d88b0ce2177d7a4e8bfb52499b551c9, type: 2}
+  girlAgent: {fileID: 0}
+  bad_boyAgent: {fileID: 0}
+  mild_boyAgent: {fileID: 0}
+  pukeObject: {fileID: 1013329644622592, guid: 569ea6f58182b9442979928b5ef54a20, type: 2}
+  pukeTransform: {fileID: 0}
+  crayonPrefab: {fileID: 1731922301614742, guid: bf27a1252f0d6f8488b0512cbc8f171e,
+    type: 2}
+  tv: {fileID: 0}
+  goodJobCounter: 0

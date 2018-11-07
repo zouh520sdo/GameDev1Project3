@@ -9,6 +9,7 @@ public class RoomControl : MonoBehaviour {
     public Room roomType;
     public GameManager1 gamemanager;
     public Transform sitTranform;
+    public Transform crayonTransform;
 
     public enum Action
     {
@@ -17,11 +18,16 @@ public class RoomControl : MonoBehaviour {
         flush,
         puckAndFlush,
 
-        // Boys room
+        // bedroom
         beer,
         light,
         sit,
-        crayon
+        crayon,
+
+        // Living room
+        goodTV,
+        badTV,
+        sadTV
     }
 
     public List<Action> actions;
@@ -39,10 +45,14 @@ public class RoomControl : MonoBehaviour {
         }
         else if (roomType == Room.boysroom)
         {
+            actions.Add(Action.crayon);
+            actions.Add(Action.sit);
             actions.Add(Action.beer);
         }
         else if (roomType == Room.girlroom)
         {
+            actions.Add(Action.crayon);
+            actions.Add(Action.sit);
             actions.Add(Action.beer);
         }
         else if (roomType == Room.kitchen)
@@ -51,11 +61,16 @@ public class RoomControl : MonoBehaviour {
         }
         else if (roomType == Room.livingroom)
         {
-
+            actions.Add(Action.sit);
+            actions.Add(Action.sadTV);
+            actions.Add(Action.badTV);
+            actions.Add(Action.goodTV);
         }
         else if (roomType == Room.momroom)
         {
-
+            actions.Add(Action.crayon);
+            actions.Add(Action.sit);
+            actions.Add(Action.beer);
         }
         ///
 	}
@@ -93,6 +108,23 @@ public class RoomControl : MonoBehaviour {
                 {
                     gamemanager.beer(child, sitTranform);
                 }
+            }
+            else if (action == Action.crayon)
+            {
+                gamemanager.crayon(crayonTransform);
+            }
+            else if (action == Action.goodTV)
+            {
+                gamemanager.goodTV(child, sitTranform);
+            }
+            else if (action == Action.badTV)
+            {
+                gamemanager.badTV(child, sitTranform);
+
+            }
+            else if (action == Action.sadTV)
+            {
+                gamemanager.sadTV(child, sitTranform);
             }
         }
         catch (System.Exception)

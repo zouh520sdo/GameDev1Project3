@@ -11,5 +11,11 @@ public class Interactable : MonoBehaviour {
     {
         Debug.Log("Interacting with " + name);
     }
- 
+
+    //override in child with appropriate action
+    public virtual string getAction()
+    {
+    return "";
+    }
+
 }

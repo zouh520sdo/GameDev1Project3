@@ -27,4 +27,13 @@ public class Table : Interactable {
             _player.hasCookedFood = false;
         }
     }
+
+  public override string getAction()
+  {
+    if (_player.hasCookedFood)
+    {
+      return "Place food";
+    }
+    else return "";
+  }
 }
